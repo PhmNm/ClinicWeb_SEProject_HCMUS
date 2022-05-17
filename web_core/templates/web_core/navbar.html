@@ -1,0 +1,67 @@
+{% load static %}
+
+<style>
+    .my-navbar {
+        color: #fff;
+        background-color: #399;
+    }
+
+    .my-nav-item {
+        color: #fff;
+        font-weight: bold;
+        padding: 0.6rem 1rem !important;
+        text-transform: uppercase;
+        border-radius: 5px;
+        width: 120px;
+        text-align: center;
+    }
+
+    .my-nav-item:hover:not(.my-nav-active) {
+        color: #fff;
+        opacity: 0.7;
+    }
+
+    .my-nav-active,
+    .my-nav-active:hover {
+        color: #399;
+        background-color: #fff;
+    }
+
+    .my-btn {
+        border: 1px solid #fff;
+        margin-right: 10px;
+    }
+
+    .hello-msg {
+        font-size: 18px;
+        color: #fff;
+        margin-right: 20px;
+    }
+
+    .hello-msg > span {
+        font-style: italic;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg my-navbar">
+    <a href="{% url 'home' %}">
+        <img class="navbar-brand" alt="logo-brand" src="{% static 'images/favicon.png' %}" height="50"
+             style="padding-bottom: 0.25rem"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    {% with request.resolver_match.url_name as url_name %}
+        <div class="navbar-nav">
+            <a class="nav-item nav-link my-nav-item {% if url_name == 'home' %}my-nav-active{% endif %}" href="#">Trang chủ</a>
+            <a class="nav-item nav-link my-nav-item" href="#">Tra cứu</a>
+            <a class="nav-item nav-link my-nav-item" href="#">Quản lý</a>
+        </div>
+    {% endwith %}
+    </div>
+    <span class="hello-msg">Xin chào, <span>Phúc</span></span>
+    <a class="nav-item nav-link my-nav-item my-btn" href="#">Đăng xuất</a>
+    <a class="nav-item nav-link my-nav-item my-btn" href="#">Đăng nhập</a>
+</nav>

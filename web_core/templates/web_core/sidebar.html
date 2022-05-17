@@ -1,0 +1,58 @@
+<style>
+    .my-navbar.fixed-left {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        bottom: 0;
+        padding: 0;
+        z-index: 1030;
+        width: 236px;
+        background: #fff;
+        border-right: 1px solid #399;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+    }
+
+    .navbar-nav.my-sidebar-nav {
+        flex-direction: column;
+    }
+
+    .my-sidebar-item {
+        color: #399;
+        font-weight: bold;
+        padding: 0 1.9rem !important;
+        text-transform: uppercase;
+        height: 88px;
+        line-height: 88px;
+        border-radius: 10px;
+    }
+
+    .my-sidebar-item:hover:not(.my-sidebar-active) {
+        color: #399;
+        opacity: 0.7;
+    }
+
+    .my-sidebar-active,
+    .my-sidebar-active:hover {
+        color: #fff;
+        background-color: #399;
+    }
+</style>
+
+<nav class="navbar navbar-expand-md my-navbar fixed-left">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    {% with request.resolver_match.url_name as url_name %}
+        <div class="navbar-nav my-sidebar-nav">
+            <a class="nav-item nav-link my-sidebar-item {% if url_name == 'home' %}my-sidebar-active{% endif %}" href="#">Danh sách khám bệnh</a>
+            <a class="nav-item nav-link my-sidebar-item" href="#">Lịch sử khám</a>
+            <a class="nav-item nav-link my-sidebar-item" href="#">Danh sách phiếu khám</a>
+            <a class="nav-item nav-link my-sidebar-item" href="#">Xuất hóa đơn</a>
+            <a class="nav-item nav-link my-sidebar-item" href="#">Danh sách bệnh nhân</a>
+            <a class="nav-item nav-link my-sidebar-item" href="#">Lập báo cáo</a>
+            <a class="nav-item nav-link my-sidebar-item" href="#">Thay đổi quy định</a>
+        </div>
+    {% endwith %}
+</nav>

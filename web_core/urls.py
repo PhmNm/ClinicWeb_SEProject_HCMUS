@@ -5,6 +5,6 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 
-urls_pattern = [
+urlpatterns = [
     path('', views.home, name='home'),
 ]
