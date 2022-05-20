@@ -13,19 +13,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
   <link rel="icon" href="{% static '/images/favicon.png' %}" type="image/gif">
 </head>
 
 <body>
   {% include 'web_core/navbar.html' %}
-  {% include 'web_core/sidebar.html' %}
 
   <div class="container-fluid">
+
     {% block content %}
 
     {% endblock %}
+
   </div>
+
+  {% if request.resolver_match.url_name == 'home' %}
+  <div class="footer">
+    {% include 'web_core/footer.html' %}
+  </div>
+  {% endif %}
 </body>
 
 </html>

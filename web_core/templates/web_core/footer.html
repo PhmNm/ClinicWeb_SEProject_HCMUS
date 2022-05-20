@@ -1,0 +1,45 @@
+{% load static %}
+<style>
+    footer {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 150px;
+        padding-top: 15px;
+        padding-left: 15px;
+        background-color: #399;
+        color: #fff;
+    }
+
+    .info-row {
+        padding-bottom: 0.5rem;
+    }
+
+    .logo {
+        float: right;
+        margin-right: 2rem;
+    }
+</style>
+<footer>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="info-row">
+                <span>PHÒNG KHÁM SE14</span>
+            </div>
+            <div class="info-row">
+                <span>ĐỊA CHỈ: 227 Nguyễn Văn Cừ, phường 4, quận 5, TPHCM</span>
+            </div>
+            <div class="info-row">
+                <span>SĐT: 0987654321</span>
+            </div>
+            <div class="info-row">
+                <span>EMAIL: phongkhamse14@gmail.com</span>
+            </div>
+
+        </div>
+        <div class="col-md-5">
+            <img class="logo" src="{% static 'images/favicon.png' %}" height="128">
+        </div>
+    </div>
+</footer>

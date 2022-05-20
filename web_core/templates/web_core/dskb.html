@@ -1,0 +1,107 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+<style>
+    .row.sub {
+        margin-top: 2rem;
+    }
+
+    .col-md-2 {
+        padding: 0;
+    }
+
+    .col-md-10 {
+        margin-top: 3rem;
+    }
+
+    .table-title {
+        display: flex;
+        justify-content: center;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    th.small-content {
+        width: 150px;
+    }
+
+    th.mid-content {
+        width: 250px;
+    }
+
+    th.large-content {
+        width: 450px;
+    }
+
+    .table-head {
+        color: #ffff;
+        background-color: #399;
+    }
+
+    .btn-text-right {
+        text-align: right;
+    }
+
+    .btn.add-btn {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        margin-right: 20px;
+        color: #fff;
+        background-color: #399;
+    }
+
+    .btn:hover {
+        background-color: #fff;
+        color: #399;
+        border-color: #399;
+        border-width: 1px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-2">
+        {% include 'web_core/sidebar.html' %}
+
+    </div>
+    <div class="col-md-10">
+        <h2 class="table-title">DANH SÁCH KHÁM BỆNH</h2>
+        <div class="row sub">
+            <div class="col-md-4">
+                <span>Số bệnh nhân đã khám: {{count}}</span>
+            </div>
+            <div class="col-md-4">
+                <span>Số bệnh nhân tối đa: {{max_benhnhan}}</span>
+            </div>
+            <div class="col-md-4">
+                <div class="btn-text-right">
+                    <button class='btn add-btn' href="#">Thêm bệnh nhân</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card card-body">
+            <table class='table table-sm'>
+
+                <tr class="table-head">
+                    <th class="small-content">STT</th>
+                    <th class="mid-content">Họ tên</th>
+                    <th class="small-content">Giới tính</th>
+                    <th class="small-content">Năm sinh</th>
+                    <th class="large-content">Địa chỉ</th>
+                </tr>
+                {% for benhnhan in benhnhans %}
+                <tr>
+                    <th class="small-content">{{benhnhan.id}}</th>
+                    <th class="mid-content">{{benhnhan.ho_ten}}</th>
+                    <th class="small-content">{{benhnhan.gioi_tinh}}</th>
+                    <th class="small-content">{{benhnhan.ngay_sinh|date:"d/m/Y"}}</th>
+                    <th class="large-content">{{benhnhan.dia_chi}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
