@@ -10,4 +10,5 @@ urlpatterns = [
     path('login', views.loginPage, name='login'),
     path('logout', views.logoutUser, name='logout'),
     path('dskb', views.dskb, name='quanli_dskb'),
+    path('dsbn', views.dsbn, name='quanli_dsbn'),
 ]

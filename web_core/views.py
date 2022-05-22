@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 
 from django.contrib.auth.decorators import login_required
-from .decorators import unauthenticated_user, allowed_users
+from .decorators import unauthenticated_user, allowed_users, admin_only
 
 #utils
 from datetime import datetime as dt
@@ -51,3 +51,9 @@ def dskb(request):
     enum_dskb = enumerate(benhnhans,start = 1)
     context = {'enum_dskb':enum_dskb, 'count':count, 'max_benhnhan':max_benhnhan, 'today':today}
     return render(request, 'web_core/dskb.html', context)
+
+@admin_only
+def dsbn(request):
+    dsbn = BENHNHAN.objects.all()
+    context = {'dsbn':dsbn}
+    return render(request, 'web_core/dsbn.html', context)

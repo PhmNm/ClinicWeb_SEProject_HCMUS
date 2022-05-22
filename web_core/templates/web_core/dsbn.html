@@ -51,12 +51,20 @@
         text-align: right;
     }
 
-    .btn.add-btn {
+    .btn.edit-btn {
         font-weight: bold;
         margin-bottom: 0.5rem;
         margin-right: 20px;
         color: #fff;
-        background-color: #399;
+        background-color: rgb(255, 204, 0);
+    }
+
+    .btn.del-btn {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        margin-right: 20px;
+        color: #fff;
+        background-color: rgb(255, 37, 37)
     }
 
     .btn:hover {
@@ -72,39 +80,29 @@
 
     </div>
     <div class="col-md-10">
-        <h2 class="table-title" style>DANH SÁCH KHÁM BỆNH NGÀY {{today}}</h2>
-        <div class="row sub">
-            <div class="col-md-4">
-                <span style="padding-left: 25px;">Số bệnh nhân đã khám: {{count}}</span>
-            </div>
-            <div class="col-md-4">
-                <span>Số bệnh nhân tối đa: {{max_benhnhan}}</span>
-            </div>
-            <div class="col-md-4">
-                <div class="btn-text-right">
-                    <button class='btn add-btn' href="#">Thêm bệnh nhân</button>
-                </div>
-            </div>
-
-        </div>
-
+        <h2 class="table-title" style>DANH SÁCH BỆNH NHÂN</h2>
         <div class="card card-body">
             <table class='table table-sm'>
 
                 <tr class="table-head">
-                    <th class="small-content">STT</th>
+                    <th class="small-content">ID</th>
                     <th class="mid-content">Họ tên</th>
                     <th class="small-content">Giới tính</th>
                     <th class="small-content">Năm sinh</th>
                     <th class="large-content">Địa chỉ</th>
+                    <th class="mid-content">Thao tác</th>
                 </tr>
-                {% for index, benhnhan in enum_dskb %}
+                {% for benhnhan in dsbn %}
                 <tr>
-                    <th class="small-content">{{index}}</th>
+                    <th class="small-content">{{benhnhan.id}}</th>
                     <th class="mid-content">{{benhnhan.ho_ten}}</th>
                     <th class="small-content">{{benhnhan.gioi_tinh}}</th>
                     <th class="small-content">{{benhnhan.ngay_sinh|date:"d/m/Y"}}</th>
                     <th class="large-content">{{benhnhan.dia_chi}}</th>
+                    <th>
+                        <a class="btn edit-btn">Chỉnh sửa</a>
+                        <a class="btn del-btn">Xoá</a>
+                    </th>
                 </tr>
                 {% endfor %}
             </table>
