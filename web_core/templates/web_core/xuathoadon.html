@@ -1,0 +1,100 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+<style>
+    .row.sub {
+        margin-top: 2rem;
+    }
+
+    .col-md-2 {
+        padding: 0;
+    }
+
+    .col-md-10 {
+        margin-top: 3rem;
+    }
+
+    .table-title {
+        display: flex;
+        justify-content: center;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    th.small-content {
+        width: 150px;
+    }
+
+    th.mid-content {
+        width: 250px;
+    }
+
+    th.large-content {
+        width: 450px;
+    }
+
+    .table-head {
+        color: #ffff;
+        background-color: #399;
+    }
+
+    .btn-text-right {
+        text-align: right;
+    }
+
+    .btn-text-middle {
+        text-align: middle;
+    }
+    .btn.add-btn {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        margin-right: 20px;
+        color: #fff;
+        background-color: #399;
+    }
+
+    .btn:hover {
+        background-color: #fff;
+        color: #399;
+        border-color: #399;
+        border-width: 1px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-2">
+        {% include 'web_core/sidebar.html' %}
+
+    </div>
+    <div class="col-md-10">
+        <h2 class="table-title" style>XUẤT HÓA ĐƠN</h2>
+        <div class="card card-body">
+            <table class='table table-sm'>
+
+                <tr class="table-head">
+                    <th class="small-content">STT</th>
+                    <th class="mid-content">Tên bệnh nhân</th>
+                    <th class="small-content">ID phiếu khám</th>
+                    <th class="small-content">Ngày khám</th>
+                    <th class="small-content"></th>
+                </tr>
+                
+                {% for index, phieukham in enum_xhd %}
+                <tr>
+                    <th class="small-content">{{index}}</th>
+                    <th class="mid-content">{{phieukham.id_benhnhan.ho_ten}} </th>
+                    <th class="small-content">{{phieukham.id}}</th>
+                    <th class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
+                    <th class="small-content">
+                        <div class="btn-text-middle">
+                            <button class='btn add-btn' href="#">Xuất</button>
+                        </div>
+                    </th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

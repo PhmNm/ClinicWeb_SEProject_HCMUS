@@ -47,3 +47,10 @@ def dskb(request):
     max_benhnhan = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa').now_value
     context = {'benhnhans':benhnhans, 'count':count, 'max_benhnhan':max_benhnhan}
     return render(request, 'web_core/dskb.html', context)
+
+@login_required(login_url='login')
+def xuathoadon(request):
+    phieukhams = PHIEUKHAM.objects.all()
+    enum_xhd = enumerate(phieukhams,start = 1)
+    context = {'phieukhams':phieukhams, 'enum_xhd':enum_xhd}
+    return render(request, 'web_core/xuathoadon.html', context)
