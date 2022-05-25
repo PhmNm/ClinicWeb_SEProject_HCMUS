@@ -11,4 +11,7 @@ urlpatterns = [
     path('logout', views.logoutUser, name='logout'),
     path('dskb', views.dskb, name='quanli_dskb'),
     path('dsbn', views.dsbn, name='quanli_dsbn'),
+    path('them_bn', views.add_benhnhan, name='quanli_them_benhnhan'),
+    path('sua_bn/<str:id>', views.edit_benhnhan, name='quanli_sua_benhnhan'),
+    path('xoa_bn/<str:id>', views.del_benhnhan, name='quanli_xoa_benhnhan'),
 ]

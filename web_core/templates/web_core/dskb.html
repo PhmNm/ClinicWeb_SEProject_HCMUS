@@ -69,7 +69,6 @@
 <div class="row">
     <div class="col-md-2">
         {% include 'web_core/sidebar.html' %}
-
     </div>
     <div class="col-md-10">
         <h2 class="table-title" style>DANH SÁCH KHÁM BỆNH NGÀY {{today}}</h2>
@@ -82,10 +81,9 @@
             </div>
             <div class="col-md-4">
                 <div class="btn-text-right">
-                    <button class='btn add-btn' href="#">Thêm bệnh nhân</button>
+                    <a class='btn add-btn' href="{% url 'quanli_them_benhnhan'%}">Thêm bệnh nhân</a>
                 </div>
             </div>
-
         </div>
 
         <div class="card card-body">

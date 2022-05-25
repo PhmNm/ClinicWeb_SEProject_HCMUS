@@ -9,11 +9,13 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 
 from django.contrib.auth.decorators import login_required
-from .decorators import unauthenticated_user, allowed_users, admin_only
+from .decorators import allowed_users, admin_only
 
 #utils
 from datetime import datetime as dt
 
+#forms import
+from .forms import benhnhan_form
 # Create your views here.
 
 ##Authenticate User
@@ -57,3 +59,35 @@ def dsbn(request):
     dsbn = BENHNHAN.objects.all()
     context = {'dsbn':dsbn}
     return render(request, 'web_core/dsbn.html', context)
+
+@admin_only
+def add_benhnhan(request):
+    form = benhnhan_form()
+    if request.method == 'POST':
+        form = benhnhan_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/dskb')
+    context = {'form':form}
+    return render(request,'web_core/add_benhnhan.html', context)
+
+@admin_only
+def edit_benhnhan(request, id):
+    benhnhan = BENHNHAN.objects.get(id=id)
+    form = benhnhan_form(instance=benhnhan)
+    if request.method == 'POST':
+        form = benhnhan_form(request.POST, instance=benhnhan)
+        if form.is_valid():
+            form.save()
+            return redirect('/dsbn')
+    context = {'form':form}
+    return render(request,'web_core/edit_benhnhan.html', context)
+
+@admin_only
+def del_benhnhan(request, id):
+    benhnhan = BENHNHAN.objects.get(id=id)
+    if request.method == 'POST':
+        benhnhan.delete()
+        return redirect('/dsbn')
+    context = {'benhnhan':benhnhan}
+    return render(request,'web_core/del_benhnhan.html', context)

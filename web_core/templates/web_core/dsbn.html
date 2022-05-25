@@ -55,7 +55,6 @@
         font-weight: bold;
         margin-bottom: 0.5rem;
         margin-right: 20px;
-        color: #fff;
         background-color: rgb(255, 204, 0);
     }
 
@@ -63,7 +62,6 @@
         font-weight: bold;
         margin-bottom: 0.5rem;
         margin-right: 20px;
-        color: #fff;
         background-color: rgb(255, 37, 37)
     }
 
@@ -100,8 +98,8 @@
                     <th class="small-content">{{benhnhan.ngay_sinh|date:"d/m/Y"}}</th>
                     <th class="large-content">{{benhnhan.dia_chi}}</th>
                     <th>
-                        <a class="btn edit-btn">Chỉnh sửa</a>
-                        <a class="btn del-btn">Xoá</a>
+                        <a class="btn edit-btn" href="{% url 'quanli_sua_benhnhan' benhnhan.id %}">Chỉnh sửa</a>
+                        <a class="btn del-btn" href="{% url 'quanli_xoa_benhnhan' benhnhan.id %}">Xoá</a>
                     </th>
                 </tr>
                 {% endfor %}
