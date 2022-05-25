@@ -38,7 +38,7 @@
         margin-right: 20px;
     }
 
-    .hello-msg > span {
+    .hello-msg>span {
         font-style: italic;
     }
 </style>
@@ -46,22 +46,33 @@
 <nav class="navbar navbar-expand-lg my-navbar">
     <a href="{% url 'home' %}">
         <img class="navbar-brand" alt="logo-brand" src="{% static 'images/favicon.png' %}" height="50"
-             style="padding-bottom: 0.25rem"/>
+            style="padding-bottom: 0.25rem" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    {% with request.resolver_match.url_name as url_name %}
+        {% with request.resolver_match.url_name as url_name %}
         <div class="navbar-nav">
-            <a class="nav-item nav-link my-nav-item {% if url_name == 'home' %}my-nav-active{% endif %}" href="#">Trang chủ</a>
+            <a class="nav-item nav-link my-nav-item {% if url_name == 'home' %}my-nav-active{% endif %}"
+                href="{% url 'home' %}">Trang chủ</a>
             <a class="nav-item nav-link my-nav-item" href="#">Tra cứu</a>
-            <a class="nav-item nav-link my-nav-item" href="#">Quản lý</a>
+            <a class="nav-item nav-link my-nav-item {% if 'quanli' in url_name %}my-nav-active{% endif %}"
+                href="{% url 'quanli_dskb' %}">Quản lý</a>
         </div>
-    {% endwith %}
+        {% endwith %}
     </div>
-    <span class="hello-msg">Xin chào, <span>Phúc</span></span>
-    <a class="nav-item nav-link my-nav-item my-btn" href="#">Đăng xuất</a>
-    <a class="nav-item nav-link my-nav-item my-btn" href="#">Đăng nhập</a>
+    {% with request.resolver_match.url_name as url_name %}
+
+    {% if request.user.is_authenticated %}
+    <span class="hello-msg">Xin chào, <span> {{request.user}} </span></span>
+    <a class="nav-item nav-link my-nav-item my-btn" href="{% url 'logout' %}">Đăng xuất</a>
+
+    {% else %}
+    <a class="nav-item nav-link my-nav-item my-btn {% if url_name == 'login' %}my-nav-active{% endif %}"
+        href="{% url 'login' %}">Đăng nhập</a>
+    {% endif %}
+    {% endwith %}
+
 </nav>
