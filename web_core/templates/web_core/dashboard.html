@@ -1,1 +1,103 @@
 {% extends 'web_core/main.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .news-content {
+        margin: 1.5rem 0;
+    }
+
+    .card {
+        width: 465px;
+        height: 312px;
+    }
+
+    .content-row.text {
+        padding-top: 0.7rem;
+    }
+</style>
+<div class="news-content">
+    <div class="row news-content">
+        <div class="col-md-4">
+            <div class="card card-body">
+                <div class="content-row img">
+                    <img src="{% static 'images/favicon.png' %}" href="#">
+                </div>
+                <div class="content-row text">
+                    <a href="#" class="title">Tiêu đề</a>
+                </div>
+                <div class="content-row text">
+                    <span>Nội dung</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body">
+                <div class="content-row img">
+                    <img src="{% static 'images/favicon.png' %}" href="#">
+                </div>
+                <div class="content-row text">
+                    <a href="#" class="title">Tiêu đề</a>
+                </div>
+                <div class="content-row text">
+                    <span>Nội dung</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body">
+                <div class="content-row img">
+                    <img src="{% static 'images/favicon.png' %}" href="#">
+                </div>
+                <div class="content-row text">
+                    <a href="#" class="title">Tiêu đề</a>
+                </div>
+                <div class="content-row text">
+                    <span>Nội dung</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row news-content">
+        <div class="col-md-4">
+            <div class="card card-body">
+                <div class="content-row img">
+                    <img src="{% static 'images/favicon.png' %}" href="#">
+                </div>
+                <div class="content-row text">
+                    <a href="#" class="title">Tiêu đề</a>
+                </div>
+                <div class="content-row text">
+                    <span>Nội dung</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body">
+                <div class="content-row img">
+                    <img src="{% static 'images/favicon.png' %}" href="#">
+                </div>
+                <div class="content-row text">
+                    <a href="#" class="title">Tiêu đề</a>
+                </div>
+                <div class="content-row text">
+                    <span>Nội dung</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body">
+                <div class="content-row img">
+                    <img src="{% static 'images/favicon.png' %}" href="#">
+                </div>
+                <div class="content-row text">
+                    <a href="#" class="title">Tiêu đề</a>
+                </div>
+                <div class="content-row text">
+                    <span>Nội dung</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

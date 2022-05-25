@@ -13,19 +13,68 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
   <link rel="icon" href="{% static '/images/favicon.png' %}" type="image/gif">
 </head>
 
 <body>
   {% include 'web_core/navbar.html' %}
-  {% include 'web_core/sidebar.html' %}
 
   <div class="container-fluid">
+
     {% block content %}
 
     {% endblock %}
+
   </div>
+
+  {% if request.resolver_match.url_name == 'home' %}
+  <style>
+    .footer {
+      width: 100%;
+      height: 155px;
+      clear: both;
+      background-color: #399;
+      color: #fff;
+    }
+
+    .row.footer {
+      padding-left: 15px;
+      padding-top: 15px;
+    }
+
+    .info-row {
+      padding-bottom: 0.5rem;
+    }
+
+    .logo {
+      float: right;
+    }
+  </style>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="row footer">
+        <div class="col-md-7">
+          <div class="info-row">
+            <span>PHÒNG KHÁM SE14</span>
+          </div>
+          <div class="info-row">
+            <span>ĐỊA CHỈ: 227 Nguyễn Văn Cừ, phường 4, quận 5, TPHCM</span>
+          </div>
+          <div class="info-row">
+            <span>SĐT: 0987654321</span>
+          </div>
+          <div class="info-row">
+            <span>EMAIL: phongkhamse14@gmail.com</span>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img class="logo" src="{% static 'images/favicon.png' %}" height="128">
+        </div>
+      </div>
+    </div>
+  </footer>
+  {% endif %}
 </body>
 
 </html>

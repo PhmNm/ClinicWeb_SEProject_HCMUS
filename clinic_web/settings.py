@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from django.conf.locale.es import formats as es_formats
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'web_core',
+
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -112,6 +115,13 @@ USE_I18N = True
 
 USE_TZ = True
 
+es_formats.SHORT_DATE_FORMAT = "d/m/Y"
+
+es_formats.DATE_FORMAT = "d/m/Y"
+
+es_formats.DATETIME_FORMAT = "d M Y H:i:s"
+
+es_formats.DATE_INPUT_FORMATS = ["%d/%m/%Y"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
