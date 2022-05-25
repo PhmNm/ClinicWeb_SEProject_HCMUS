@@ -54,8 +54,7 @@
             href="{% url 'quanli_dspk' %}">Danh sách phiếu khám</a>
         <a class="nav-item nav-link my-sidebar-item" href="#">Xuất hóa đơn</a>
         {% if request.user.is_staff%}
-        <a class="nav-item nav-link my-sidebar-item {% if 'dsbn' in url_name %}my-sidebar-active{% endif %}"
-            href="{% url 'quanli_dsbn' %}">Danh sách bệnh nhân</a>
+        <a class="nav-item nav-link my-sidebar-item" href="#">Danh sách bệnh nhân</a>
         <a class="nav-item nav-link my-sidebar-item" href="#">Lập báo cáo</a>
         <a class="nav-item nav-link my-sidebar-item" href="#">Thay đổi quy định</a>
         {% endif %}

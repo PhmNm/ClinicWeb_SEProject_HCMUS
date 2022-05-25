@@ -59,15 +59,16 @@
     .btn.edit-btn {
         font-weight: bold;
         margin-bottom: 0.5rem;
-        margin-right: 20px;
+        cursor: pointer;
         color: #fff;
         background-color: rgb(255, 204, 0);
     }
 
     .btn.del-btn {
-        /* font-weight: bold; */
+        font-weight: bold;
         margin-bottom: 0.5rem;
         margin-right: 20px;
+        cursor: pointer;
         color: #fff;
         background-color: rgb(255, 37, 37)
     }
@@ -120,6 +121,10 @@
                     <th class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
                     <th>
                         <a class="btn view-btn text_White">Xem</a>
+                        {% if request.user.is_staff%}
+                            <a class="btn edit-btn">Chỉnh sửa</a>
+                            <a class="btn del-btn">Xoá</a>
+                        {% endif %}
                     </th>
                 </tr>
                 {% endfor %}
