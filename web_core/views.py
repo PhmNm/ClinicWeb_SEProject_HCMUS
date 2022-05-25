@@ -44,8 +44,6 @@ def home(request):
 @login_required(login_url='login')
 def dskb(request):
     phieukhams = PHIEUKHAM.objects.filter(ngay_kham__date=dt.today().date())
-    # phieukhams = PHIEUKHAM.objects.filter(ngay_kham__date=dt(2022,5,20))
-
     benhnhans = BENHNHAN.objects.filter(id__in=[bn.id_benhnhan.id for bn in phieukhams])
     count = len(benhnhans)
     max_benhnhan = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa').now_value

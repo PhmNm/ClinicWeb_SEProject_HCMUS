@@ -1,13 +1,16 @@
-from django.forms import ModelForm, DateInput, ValidationError
+from django.forms import ModelForm, DateInput, ValidationError, DateField
 from .models import *
-from shortuuid.django_fields import ShortUUIDField
 
 class benhnhan_form(ModelForm):
+    ngay_sinh = DateField(
+        widget=DateInput(format='%d/%m/%Y'),
+        input_formats=['%d/%m/%Y']
+    )
     class Meta:
         model = BENHNHAN
         fields = '__all__'
         widgets = {
-            'ngay_sinh': DateInput(format='%d/%m/%Y'),
+            'ngay_sinh': DateInput(format="%d/%m/%Y"),
         }
 
     def clean(self):
