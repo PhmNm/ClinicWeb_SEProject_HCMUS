@@ -102,7 +102,7 @@
     </div>
     <div class="col-md-10">
         <h2 class="table-title" style>DANH SÁCH PHIẾU KHÁM</h2>   
-        <div class="btn add-btn">Thêm phiếu khám</div>
+        <div class="btn add-btn" href="{% url 'quanli_them_phieukham' %}">Thêm phiếu khám</div>
         <div class="card card-body">  
             
             <table class='table table-sm'>      
@@ -122,8 +122,8 @@
                     <th>
                         <a class="btn view-btn text_White">Xem</a>
                         {% if request.user.is_staff%}
-                            <a class="btn edit-btn">Chỉnh sửa</a>
-                            <a class="btn del-btn">Xoá</a>
+                            <a class="btn edit-btn" href="{% url 'quanli_sua_phieukham' phieukham.id %}">Chỉnh sửa</a>
+                            <a class="btn del-btn" href="{% url 'quanli_xoa_phieukham' phieukham.id %}">Xoá</a>
                         {% endif %}
                     </th>
                 </tr>

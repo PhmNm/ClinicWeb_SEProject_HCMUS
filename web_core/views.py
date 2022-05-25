@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 #models import
 from .models import *
+from .forms import phieukham_form
 
 #authentication import
 from django.contrib.auth import authenticate, login, logout
@@ -64,3 +65,47 @@ def dspk(request):
 
     context = {'enum_dspk':enum_dspk}
     return render(request, 'web_core/dspk.html', context)
+
+@login_required(login_url='login')
+def dspk(request):
+    dspk = PHIEUKHAM.objects.all().order_by('-ngay_kham')
+    enum_dspk = enumerate(dspk,start = 1)
+
+    context = {'enum_dspk':enum_dspk}
+    return render(request, 'web_core/dspk.html', context)
+
+@login_required(login_url='login')
+def add_phieukham(request):
+    form = phieukham_form()
+    if request.method == 'POST':
+        form = phieukham_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/dspk')
+    context = {'form':form}
+    return render(request,'web_core/add_phieukham.html', context)
+
+
+@admin_only
+def edit_phieukham(request, id):
+    phieukham = PHIEUKHAM.objects.get(id=id)
+    form = phieukham_form(instance=phieukham)
+    if request.method == 'POST':
+        form = phieukham_form(request.POST, instance=phieukham)
+        if form.is_valid():
+            form.save()
+            return redirect('/dspk')
+    context = {'form':form}
+    return render(request,'web_core/edit_phieukham.html', context)
+
+@admin_only
+def del_phieukham(request, id):
+    phieukham = PHIEUKHAM.objects.get(id=id)
+    if request.method == 'POST':
+        phieukham.delete()
+        return redirect('/dspk')
+    context = {'phieukham':phieukham}
+    return render(request,'web_core/del_phieukham.html', context)
+
+
+
