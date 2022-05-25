@@ -54,3 +54,14 @@ def xuathoadon(request):
     enum_xhd = enumerate(phieukhams,start = 1)
     context = {'phieukhams':phieukhams, 'enum_xhd':enum_xhd}
     return render(request, 'web_core/xuathoadon.html', context)
+
+@login_required(login_url='login')
+def hoadon(request, pk):
+    phieukham = PHIEUKHAM.objects.get(id=pk)
+    tienkham = THAMSO.objects.get(loai='Tiền khám').now_value
+    sdthuocs = SUDUNGTHUOC.objects.filter(id_phieukham=phieukham)   
+    tienthuoc = 0
+    for sdthuoc in sdthuocs:
+        tienthuoc += sdthuoc.soluong * sdthuoc.thuoc.gia_tri
+    context = {'phieukham':phieukham, 'tienkham':tienkham, 'tienthuoc':tienthuoc}
+    return render(request, 'web_core/hoadon.html', context)

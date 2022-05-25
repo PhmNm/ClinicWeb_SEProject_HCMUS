@@ -42,7 +42,7 @@ class DANHMUC(models.Model):
 
 class SUDUNGTHUOC(models.Model):
     id_phieukham = models.ForeignKey('PHIEUKHAM', on_delete = models.CASCADE, verbose_name = 'ID phiếu khám')
-    thuoc = models.ManyToManyField(DANHMUC, limit_choices_to = {'loai':'Thuốc'}, related_name = 'thuoc')
+    thuoc = models.ForeignKey(DANHMUC, on_delete = models.CASCADE, limit_choices_to = {'loai':'Thuốc'}, related_name = 'thuoc', null = True)
     soluong = models.IntegerField('Số lượng', validators = [MinValueValidator(1)])
     don_vi = models.ManyToManyField(DANHMUC, limit_choices_to = {'loai':'Đơn vị'}, related_name = 'don_vi')
     cach_dung = models.ManyToManyField(DANHMUC, limit_choices_to = {'loai':'Cách dùng'}, related_name = 'cach_dung')
@@ -59,8 +59,7 @@ class PHIEUKHAM(models.Model):
     id_benhnhan = models.ForeignKey(BENHNHAN, on_delete = models.CASCADE,verbose_name = 'ID bệnh nhân')
     ngay_kham = models.DateTimeField('Ngày khám', auto_now_add = True)
     trieu_chung = models.CharField('Triệu chứng', max_length = 100, blank = False)
-    loai_benh = models.ManyToManyField(DANHMUC,limit_choices_to = {'loai':'Bệnh'}, related_name = 'benh',verbose_name = 'Loại bệnh',)
-    su_dung_thuoc = models.ManyToManyField(SUDUNGTHUOC, blank=True)
+    loai_benh = models.ManyToManyField(DANHMUC,limit_choices_to = {'loai':'Bệnh'}, related_name = 'benh',verbose_name = 'Loại bệnh')
     def __str__(self):
         return self.id
 

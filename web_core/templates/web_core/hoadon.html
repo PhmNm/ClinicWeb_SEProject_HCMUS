@@ -47,6 +47,14 @@
         background-color: #399;
     }
 
+    .btn-text-right {
+        text-align: right;
+    }
+
+    .btn-text-left {
+        text-align: left;
+    }
+
     .btn.add-btn {
         font-weight: bold;
         margin-bottom: 0.5rem;
@@ -61,6 +69,19 @@
         border-color: #399;
         border-width: 1px;
     }
+
+    .column {
+        float: left;
+        width: 50%;
+        text-align: center;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
 </style>
 <div class="row">
     <div class="col-md-2">
@@ -68,32 +89,31 @@
 
     </div>
     <div class="col-md-10">
-        <h2 class="table-title" style>XUẤT HÓA ĐƠN</h2>
+        <h2 class="table-title" style>HÓA ĐƠN</h2>
         <div class="card card-body">
-            <table class='table table-sm'>
+            <div class="row">
+                <div class="column">
+                    <p>Họ và tên: {{phieukham.id_benhnhan.ho_ten}}</p>
+                </div>
+                <div class="column">
+                    <p>Ngày khám: {{phieukham.ngay_kham|date:"d/m/Y"}}</p>
+                </div>
+            </div>  
 
-                <tr class="table-head">
-                    <th class="small-content">STT</th>
-                    <th class="mid-content">Tên bệnh nhân</th>
-                    <th class="small-content">ID phiếu khám</th>
-                    <th class="small-content">Ngày khám</th>
-                    <th class="small-content"></th>
-                </tr>
-                
-                {% for index, phieukham in enum_xhd %}
-                <tr>
-                    <th class="small-content">{{index}}</th>
-                    <th class="mid-content">{{phieukham.id_benhnhan.ho_ten}} </th>
-                    <th class="small-content">{{phieukham.id}}</th>
-                    <th class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
-                    <th class="small-content">
-                        <div class="btn-text-right">
-                            <a class='btn add-btn' href="{% url 'quanli_xuathoadon_hoadon' phieukham.id%}">Xuất</a>
-                        </div>
-                    </th>
-                </tr>
-                {% endfor %}
-            </table>
+            <div class="row">
+                <div class="column">
+                    <p>Tiền khám: {{tienkham}} đồng</p>
+                </div>
+                <div class="column">
+                    <p>Tiền thuốc: {{tienthuoc}} đồng</p>
+                </div>
+            </div>  
+        </div>
+        <div class="d-flex justify-content-center form_container">
+            <div class="row">
+                <a class="btn add-btn" href="#" >Quay lại</a>
+                <a class="btn add-btn" href="#" >In</a>
+            </div>
         </div>
     </div>
 </div>

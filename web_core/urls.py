@@ -11,4 +11,5 @@ urlpatterns = [
     path('logout', views.logoutUser, name='logout'),
     path('dskb', views.dskb, name='quanli_dskb'),
     path('xuathoadon', views.xuathoadon, name='quanli_xuathoadon'),
+    path('hoadon/<str:pk>/', views.hoadon, name='quanli_xuathoadon_hoadon'),
 ]
