@@ -1,4 +1,5 @@
 {% extends 'web_core/main.html' %}
+{% load index %}
 
 {% block content %}
     <style>
@@ -60,7 +61,7 @@
         <div class="col-md-10">
             <div class="title-container">
                 <h2 class="table-title">Báo cáo doanh thu tháng theo ngày</h2>
-                <h2 class="table-title">Tháng 04/2022</h2>
+                <h2 class="table-title">Tháng {{ thang }}</h2>
             </div>
             <div class="card card-body">
                 <table class='table table-sm'>
@@ -71,13 +72,15 @@
                         <th class="mid-content">Doanh thu</th>
                         <th class="small-content">Tỷ lệ</th>
                     </tr>
+                    {% for i in stt %}
                     <tr>
-                        <th class="small-content">STT</th>
-                        <th class="mid-content">Ngày</th>
-                        <th class="small-content">Số bệnh nhân</th>
-                        <th class="mid-content">Doanh thu</th>
-                        <th class="small-content">Tỷ lệ</th>
+                        <th class="small-content">{{ stt|index:i|add:1 }}</th>
+                        <th class="mid-content">{{ ngay|index:i|date:'d/m/Y' }}</th>
+                        <th class="small-content">{{ so_benh_nhan|index:i }}</th>
+                        <th class="mid-content">{{ doanh_thu|index:i }} VNĐ</th>
+                        <th class="small-content">{{ ty_le|index:i }} %</th>
                     </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>
