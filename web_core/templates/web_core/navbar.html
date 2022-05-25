@@ -57,7 +57,7 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link my-nav-item {% if url_name == 'home' %}my-nav-active{% endif %}" href="#">Trang chủ</a>
             <a class="nav-item nav-link my-nav-item" href="#">Tra cứu</a>
-            <a class="nav-item nav-link my-nav-item" href="#">Quản lý</a>
+            <a class="nav-item nav-link my-nav-item {% if 'quanli' in url_name %}my-nav-active{% endif %}" href="#">Quản lý</a>
         </div>
     {% endwith %}
     </div>

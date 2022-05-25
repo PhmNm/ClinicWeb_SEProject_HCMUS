@@ -53,7 +53,7 @@
         <a class="nav-item nav-link my-sidebar-item" href="#">Danh sách phiếu khám</a>
         <a class="nav-item nav-link my-sidebar-item" href="#">Xuất hóa đơn</a>
         <a class="nav-item nav-link my-sidebar-item" href="#">Danh sách bệnh nhân</a>
-        <a class="nav-item nav-link my-sidebar-item" href="#">Lập báo cáo</a>
+        <a class="nav-item nav-link my-sidebar-item {% if 'lapbaocao' in url_name %}my-sidebar-active{% endif %}" href="{% url 'quanli_lapbaocao' %}">Lập báo cáo</a>
         <a class="nav-item nav-link my-sidebar-item" href="#">Thay đổi quy định</a>
     </div>
     {% endwith %}

@@ -1,0 +1,80 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+    <style>
+        .col-md-2 {
+            padding: 0;
+        }
+
+        .col-md-10 {
+            margin-top: 3rem;
+        }
+
+        .card-body {
+            padding-bottom: 0;
+        }
+
+        .table-title {
+            display: flex;
+            justify-content: center;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        th.small-content {
+            vertical-align: middle;
+            width: 150px;
+        }
+
+        th.large-content {
+            vertical-align: middle;
+            width: 450px;
+        }
+
+        .table-head {
+            color: #ffff;
+            background-color: #399;
+        }
+
+        a.blue-hover:link,
+        a.blue-hover:visited {
+            color: blue;
+        }
+
+        a.blue-hover:hover,
+        a.blue-hover:active {
+            text-decoration: underline;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'web_core/sidebar.html' %}
+        </div>
+        <div class="col-md-10">
+            <h2 class="table-title">Lập báo cáo</h2>
+            <div class="card card-body">
+                <table class='table table-sm'>
+                    <tr class="table-head">
+                        <th class="small-content">STT</th>
+                        <th class="large-content">Loại báo cáo</th>
+                        <th class="small-content">Thao tác</th>
+                    </tr>
+                    <tr>
+                        <th class="small-content">1</th>
+                        <th class="large-content">Báo cáo doanh thu tháng theo ngày</th>
+                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_lapbaocao_bcdtt' %}">Lập báo cáo</a></th>
+                    </tr>
+                    <tr>
+                        <th class="small-content">2</th>
+                        <th class="large-content">Báo cáo sử dụng thuốc</th>
+                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_lapbaocao_bcsdt' %}">Lập báo cáo</a></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

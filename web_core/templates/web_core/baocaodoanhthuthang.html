@@ -1,0 +1,85 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+    <style>
+        .col-md-2 {
+            padding: 0;
+        }
+
+        .col-md-10 {
+            margin-top: 3rem;
+        }
+
+        .card-body {
+            padding-bottom: 0;
+        }
+
+        .title-container {
+            margin-bottom: 32px;
+        }
+
+        .table-title {
+            display: flex;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        th.small-content {
+            vertical-align: middle;
+            width: 150px;
+        }
+
+        th.mid-content {
+            vertical-align: middle;
+            width: 250px;
+        }
+
+        .table-head {
+            color: #ffff;
+            background-color: #399;
+        }
+
+        a.blue-hover:link,
+        a.blue-hover:visited {
+            color: blue;
+        }
+
+        a.blue-hover:hover,
+        a.blue-hover:active {
+            text-decoration: underline;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'web_core/sidebar.html' %}
+        </div>
+        <div class="col-md-10">
+            <div class="title-container">
+                <h2 class="table-title">Báo cáo doanh thu tháng theo ngày</h2>
+                <h2 class="table-title">Tháng 04/2022</h2>
+            </div>
+            <div class="card card-body">
+                <table class='table table-sm'>
+                    <tr class="table-head">
+                        <th class="small-content">STT</th>
+                        <th class="mid-content">Ngày</th>
+                        <th class="small-content">Số bệnh nhân</th>
+                        <th class="mid-content">Doanh thu</th>
+                        <th class="small-content">Tỷ lệ</th>
+                    </tr>
+                    <tr>
+                        <th class="small-content">STT</th>
+                        <th class="mid-content">Ngày</th>
+                        <th class="small-content">Số bệnh nhân</th>
+                        <th class="mid-content">Doanh thu</th>
+                        <th class="small-content">Tỷ lệ</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
