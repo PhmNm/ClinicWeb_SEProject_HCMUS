@@ -45,7 +45,12 @@
 
                 <form action="" method="post">
                     {% csrf_token %}
-                    {{form.as_p}}
+                    {{pk_form.as_p}}
+                    {{ formset.management_form }}
+                    {% for form in formset %}
+                        {{form}}
+                        <hr>
+                    {% endfor %}
                     <div class="btn form-btn">
                         <input type="submit" value="Xác nhận">
                         <a class='btn back-btn' href=" {% url 'quanli_dspk' %}">Trở lại</a>

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-
+from django.forms import inlineformset_factory
 #models import
 from .models import *
-from .forms import phieukham_form
+from .forms import phieukham_form, sudungthuoc_form
 
 #authentication import
 from django.contrib.auth import authenticate, login, logout
@@ -67,35 +67,49 @@ def dspk(request):
     return render(request, 'web_core/dspk.html', context)
 
 @login_required(login_url='login')
-def dspk(request):
-    dspk = PHIEUKHAM.objects.all().order_by('-ngay_kham')
-    enum_dspk = enumerate(dspk,start = 1)
-
-    context = {'enum_dspk':enum_dspk}
-    return render(request, 'web_core/dspk.html', context)
+def view_phieukham(request, id):
+    phieukham = PHIEUKHAM.objects.get(id=id)
+    sdt = SUDUNGTHUOC.objects.filter(id_phieukham = id)
+    enum_dsthuoc = enumerate(sdt,start = 1)
+    context = {'phieukham':phieukham, 'enum_dsthuoc':enum_dsthuoc}
+    return render(request,'web_core/view_phieukham.html', context)
 
 @login_required(login_url='login')
 def add_phieukham(request):
-    form = phieukham_form()
+    sdtFormSet = inlineformset_factory(PHIEUKHAM, SUDUNGTHUOC, 
+                 fields=('id_phieukham','thuoc', 'soluong', 'don_vi', 'cach_dung'), extra=10)
+    pk_form = phieukham_form()
+    formset = sdtFormSet()
     if request.method == 'POST':
-        form = phieukham_form(request.POST)
-        if form.is_valid():
-            form.save()
+        print(request.POST)
+        pk_form = phieukham_form(request.POST)
+        if pk_form.is_valid():
+            pk_form.save()
+        pk = PHIEUKHAM.objects.get(id = pk_form['id'].data)
+        formset = sdtFormSet(request.POST, instance=pk)
+        if formset.is_valid():
+            formset.save()
             return redirect('/dspk')
-    context = {'form':form}
+    context = {'pk_form':pk_form, 'formset':formset}
     return render(request,'web_core/add_phieukham.html', context)
 
 
 @admin_only
 def edit_phieukham(request, id):
+    sdtFormSet = inlineformset_factory(PHIEUKHAM, SUDUNGTHUOC, 
+                 fields=('id_phieukham','thuoc', 'soluong', 'don_vi', 'cach_dung'), extra=10)
     phieukham = PHIEUKHAM.objects.get(id=id)
-    form = phieukham_form(instance=phieukham)
+    pk_form = phieukham_form(instance=phieukham)
+    formset = sdtFormSet(instance=phieukham)
     if request.method == 'POST':
-        form = phieukham_form(request.POST, instance=phieukham)
-        if form.is_valid():
-            form.save()
+        pk_form = phieukham_form(request.POST, instance=phieukham)
+        if pk_form.is_valid():
+            pk_form.save()
+        formset = sdtFormSet(request.POST, instance=phieukham)
+        if formset.is_valid():
+            formset.save()
             return redirect('/dspk')
-    context = {'form':form}
+    context = {'pk_form':pk_form, 'formset':formset}
     return render(request,'web_core/edit_phieukham.html', context)
 
 @admin_only
