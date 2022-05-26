@@ -6,3 +6,9 @@ class ThayDoiGiaTriForm(ModelForm):
     class Meta:
         model = THAMSO
         fields = ['now_value']
+
+
+class LoaiBenhForm(ModelForm):
+    class Meta:
+        model = DANHMUC
+        fields = ['ten']

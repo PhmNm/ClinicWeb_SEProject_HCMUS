@@ -8,7 +8,7 @@ from datetime import datetime as dt
 from django.db.models import Count, Sum
 
 # forms import
-from .forms import ThayDoiGiaTriForm
+from .forms import ThayDoiGiaTriForm, LoaiBenhForm
 
 
 # forms import
@@ -110,3 +110,34 @@ def thaydoi_tienkham(request):
 
     context = {'form': form}
     return render(request, 'web_core/thaydoi_tienkham.html', context)
+
+
+def thaydoi_loaibenh(request):
+    dslb = DANHMUC.objects.filter(loai='Bệnh').values_list('ten', flat=True)
+    context = {'dslb': dslb}
+    return render(request, 'web_core/thaydoi_loaibenh.html', context)
+
+
+def thaydoi_loaibenh_them(request):
+    benh = DANHMUC(loai='Bệnh')
+    form = LoaiBenhForm()
+
+    if request.method == 'POST':
+        form = LoaiBenhForm(request.POST, instance=benh)
+        if form.is_valid():
+            form.save()
+            return redirect('/thaydoi/loaibenh')
+
+    context = {'form': form}
+    return render(request, 'web_core/thaydoi_loaibenh_them.html', context)
+
+
+def thaydoi_loaibenh_xoa(request, ten):
+    benh = DANHMUC.objects.get(ten=ten)
+
+    if request.method == 'POST':
+        benh.delete()
+        return redirect('/thaydoi/loaibenh')
+
+    context = {'benh': benh}
+    return render(request, 'web_core/thaydoi_loaibenh_xoa.html', context)
