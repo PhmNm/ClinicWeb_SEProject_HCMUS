@@ -8,7 +8,7 @@ class ThayDoiGiaTriForm(ModelForm):
         fields = ['now_value']
 
 
-class LoaiBenhForm(ModelForm):
+class DanhMucForm(ModelForm):
     class Meta:
         model = DANHMUC
         fields = ['ten']

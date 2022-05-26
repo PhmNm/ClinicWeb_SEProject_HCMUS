@@ -8,7 +8,7 @@ from datetime import datetime as dt
 from django.db.models import Count, Sum
 
 # forms import
-from .forms import ThayDoiGiaTriForm, LoaiBenhForm
+from .forms import ThayDoiGiaTriForm, DanhMucForm
 
 
 # forms import
@@ -120,10 +120,10 @@ def thaydoi_loaibenh(request):
 
 def thaydoi_loaibenh_them(request):
     benh = DANHMUC(loai='Bệnh')
-    form = LoaiBenhForm()
+    form = DanhMucForm()
 
     if request.method == 'POST':
-        form = LoaiBenhForm(request.POST, instance=benh)
+        form = DanhMucForm(request.POST, instance=benh)
         if form.is_valid():
             form.save()
             return redirect('/thaydoi/loaibenh')
@@ -141,3 +141,34 @@ def thaydoi_loaibenh_xoa(request, ten):
 
     context = {'benh': benh}
     return render(request, 'web_core/thaydoi_loaibenh_xoa.html', context)
+
+
+def thaydoi_dvt(request):
+    dsdvt = DANHMUC.objects.filter(loai='Đơn vị').values_list('ten', flat=True)
+    context = {'dsdvt': dsdvt}
+    return render(request, 'web_core/thaydoi_dvt.html', context)
+
+
+def thaydoi_dvt_them(request):
+    dvt = DANHMUC(loai='Đơn vị')
+    form = DanhMucForm()
+
+    if request.method == 'POST':
+        form = DanhMucForm(request.POST, instance=dvt)
+        if form.is_valid():
+            form.save()
+            return redirect('/thaydoi/donvitinh')
+
+    context = {'form': form}
+    return render(request, 'web_core/thaydoi_dvt_them.html', context)
+
+
+def thaydoi_dvt_xoa(request, ten):
+    dvt = DANHMUC.objects.get(ten=ten)
+
+    if request.method == 'POST':
+        dvt.delete()
+        return redirect('/thaydoi/donvitinh')
+
+    context = {'dvt': dvt}
+    return render(request, 'web_core/thaydoi_dvt_xoa.html', context)

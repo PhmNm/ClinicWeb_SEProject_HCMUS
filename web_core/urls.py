@@ -16,4 +16,7 @@ urlpatterns = [
     path('thaydoi/loaibenh', views.thaydoi_loaibenh, name='quanli_thaydoi_loaibenh'),
     path('thaydoi/loaibenh/them', views.thaydoi_loaibenh_them, name='quanli_thaydoi_loaibenh_them'),
     path('thaydoi/loaibenh/xoa/<str:ten>', views.thaydoi_loaibenh_xoa, name='quanli_thaydoi_loaibenh_xoa'),
+    path('thaydoi/donvitinh', views.thaydoi_dvt, name='quanli_thaydoi_dvt'),
+    path('thaydoi/donvitinh/them', views.thaydoi_dvt_them, name='quanli_thaydoi_dvt_them'),
+    path('thaydoi/donvitinh/xoa/<str:ten>', views.thaydoi_dvt_xoa, name='quanli_thaydoi_dvt_xoa'),
 ]
