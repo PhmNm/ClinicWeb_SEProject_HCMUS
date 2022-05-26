@@ -20,7 +20,7 @@ class BENHNHAN(models.Model):
         primary_key=True)
     ho_ten = models.CharField('Họ tên', max_length = 100)
     gioi_tinh = models.CharField('Giới tính', max_length = 3, choices = GIOITINH)
-    ngay_sinh = models.DateField('Ngày sinh', default = '01/01/1990', null=True, )
+    ngay_sinh = models.DateField('Ngày sinh', default = '01/01/1990', null=True)
     dia_chi = models.CharField('Địa chỉ', max_length = 255, null = True)
     def __str__(self):
         line = str(self.id) + ' | ' + self.ho_ten

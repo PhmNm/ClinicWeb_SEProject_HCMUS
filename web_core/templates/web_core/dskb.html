@@ -19,8 +19,12 @@
     }
 
     .table-title {
-        display: flex;
-        justify-content: center;
+        text-align: center;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
     }
 
     th {
@@ -28,17 +32,14 @@
     }
 
     th.small-content {
-        vertical-align: middle;
         width: 150px;
     }
 
     th.mid-content {
-        vertical-align: middle;
         width: 250px;
     }
 
     th.large-content {
-        vertical-align: middle;
         width: 450px;
     }
 
@@ -65,13 +66,42 @@
         border-color: #399;
         border-width: 1px;
     }
+
+    input[type=submit] {
+        font-weight: bold;
+        background-color: #399;
+        border-radius: 6px;
+        border-width: 0px;
+        color: white;
+        padding: 4px 14px;
+        margin: auto;
+        margin-top: 5px;
+    }
+
+    .errorlist {
+        font-weight: bold;
+        color: red;
+        list-style-type: none;
+    }
 </style>
 <div class="row">
     <div class="col-md-2">
         {% include 'web_core/sidebar.html' %}
     </div>
     <div class="col-md-10">
-        <h2 class="table-title" style>DANH SÁCH KHÁM BỆNH NGÀY {{today}}</h2>
+        <div class='row' style="padding-bottom: 20px;">
+            <div class='col'>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form.ngay_kham.label_tag}}
+                    {{form.ngay_kham}}
+                    <input type="submit" value="Chọn">
+                </form>
+                {{form.ngay_kham.errors}}
+
+            </div>
+        </div>
+        <h2 class="table-title" style>DANH SÁCH KHÁM BỆNH NGÀY <span style="font-weight: bold">{{today}}</span></h2>
         <div class="row sub">
             <div class="col-md-4">
                 <span style="padding-left: 25px;">Số bệnh nhân đã khám: {{count}}</span>
@@ -87,7 +117,7 @@
         </div>
 
         <div class="card card-body">
-            <table class='table table-sm'>
+            <table class='table'>
 
                 <tr class="table-head">
                     <th class="small-content">STT</th>

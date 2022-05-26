@@ -19,8 +19,12 @@
     }
 
     .table-title {
-        display: flex;
-        justify-content: center;
+        text-align: center;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
     }
 
     th {
@@ -28,19 +32,17 @@
     }
 
     th.small-content {
-        vertical-align: middle;
         width: 150px;
     }
 
     th.mid-content {
-        vertical-align: middle;
         width: 250px;
     }
 
     th.large-content {
-        vertical-align: middle;
         width: 450px;
     }
+
 
     .table-head {
         color: #ffff;
@@ -53,15 +55,11 @@
 
     .btn.edit-btn {
         font-weight: bold;
-        margin-bottom: 0.5rem;
-        margin-right: 20px;
         background-color: rgb(255, 204, 0);
     }
 
     .btn.del-btn {
         font-weight: bold;
-        margin-bottom: 0.5rem;
-        margin-right: 20px;
         background-color: rgb(255, 37, 37)
     }
 
@@ -75,13 +73,11 @@
 <div class="row">
     <div class="col-md-2">
         {% include 'web_core/sidebar.html' %}
-
     </div>
     <div class="col-md-10">
         <h2 class="table-title" style>DANH SÁCH BỆNH NHÂN</h2>
         <div class="card card-body">
-            <table class='table table-sm'>
-
+            <table class='table'>
                 <tr class="table-head">
                     <th class="small-content">ID</th>
                     <th class="mid-content">Họ tên</th>

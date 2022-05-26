@@ -1,9 +1,11 @@
 from django.forms import ModelForm, DateInput, ValidationError, DateField
 from .models import *
 
+
 class benhnhan_form(ModelForm):
     ngay_sinh = DateField(
-        widget=DateInput(format='%d/%m/%Y'),
+        label='Ngày sinh',
+        widget=DateInput(format="%d/%m/%Y"),
         input_formats=['%d/%m/%Y']
     )
     class Meta:

@@ -16,6 +16,10 @@ from datetime import datetime as dt
 
 #forms import
 from .forms import benhnhan_form
+
+#filters import
+from .filters import dskb_filter
+
 # Create your views here.
 
 ##Authenticate User
@@ -43,13 +47,23 @@ def home(request):
 
 @login_required(login_url='login')
 def dskb(request):
-    phieukhams = PHIEUKHAM.objects.filter(ngay_kham__date=dt.today().date())
-    benhnhans = BENHNHAN.objects.filter(id__in=[bn.id_benhnhan.id for bn in phieukhams])
-    count = len(benhnhans)
+
     max_benhnhan = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa').now_value
-    today = dt.today().date().strftime('%d/%m/%Y')
+    today = dt.today().date()
+    form = dskb_filter
+    if request.method == 'POST':
+        # today = dt.strptime(request.POST['date'],'%d/%m/%Y')
+        form = dskb_filter(request.POST)
+        if form.is_valid() and form['ngay_kham'].data != "":
+            today = dt.strptime(form['ngay_kham'].data,'%d/%m/%Y')
+    phieukhams = PHIEUKHAM.objects.filter(ngay_kham__date=today)
+    benhnhans = []
+    for benhnhan in phieukhams:
+        benhnhans.append(BENHNHAN.objects.get(id=benhnhan.id_benhnhan.id))
+    # benhnhans = BENHNHAN.objects.filter(id__in=[bn.id_benhnhan.id for bn in phieukhams])
+    count = len(phieukhams)
     enum_dskb = enumerate(benhnhans,start = 1)
-    context = {'enum_dskb':enum_dskb, 'count':count, 'max_benhnhan':max_benhnhan, 'today':today}
+    context = {'enum_dskb':enum_dskb, 'count':count, 'max_benhnhan':max_benhnhan, 'today':today.strftime('%d/%m/%Y'), 'form': form}
     return render(request, 'web_core/dskb.html', context)
 
 @admin_only
@@ -58,7 +72,6 @@ def dsbn(request):
     context = {'dsbn':dsbn}
     return render(request, 'web_core/dsbn.html', context)
 
-@admin_only
 def add_benhnhan(request):
     form = benhnhan_form()
     if request.method == 'POST':
