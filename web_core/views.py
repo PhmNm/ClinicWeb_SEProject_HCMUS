@@ -7,6 +7,9 @@ from .models import *
 from datetime import datetime as dt
 from django.db.models import Count, Sum
 
+# forms import
+from .forms import ThayDoiSlbnForm
+
 
 # forms import
 # from .forms import benhnhan_form
@@ -73,3 +76,22 @@ def baocao_sudungthuoc(request):
 
     context = {'thang': thang, 'stt': stt, 'rows': rows}
     return render(request, 'web_core/baocaosudungthuoc.html', context=context)
+
+
+def thaydoi_quydinh(request):
+    return render(request, 'web_core/thaydoiquydinh.html')
+
+
+def thaydoi_slbn(request):
+    slbn = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa')
+    now_val = THAMSO.objects.filter(loai='Số lượng bệnh nhân tối đa').values_list('now_value', flat=True)[0]
+    form = ThayDoiSlbnForm(initial={'loai': slbn, 'now_value': now_val})
+
+    if request.method == 'POST':
+        form = ThayDoiSlbnForm(request.POST, instance=slbn)
+        if form.is_valid():
+            form.save()
+            return redirect('/thaydoi')
+
+    context = {'form': form}
+    return render(request, 'web_core/thaydoi_slbn.html', context)
