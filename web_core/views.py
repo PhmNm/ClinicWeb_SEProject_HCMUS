@@ -8,7 +8,7 @@ from datetime import datetime as dt
 from django.db.models import Count, Sum
 
 # forms import
-from .forms import ThayDoiSlbnForm
+from .forms import ThayDoiGiaTriForm
 
 
 # forms import
@@ -85,13 +85,28 @@ def thaydoi_quydinh(request):
 def thaydoi_slbn(request):
     slbn = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa')
     now_val = THAMSO.objects.filter(loai='Số lượng bệnh nhân tối đa').values_list('now_value', flat=True)[0]
-    form = ThayDoiSlbnForm(initial={'loai': slbn, 'now_value': now_val})
+    form = ThayDoiGiaTriForm(initial={'loai': slbn, 'now_value': now_val})
 
     if request.method == 'POST':
-        form = ThayDoiSlbnForm(request.POST, instance=slbn)
+        form = ThayDoiGiaTriForm(request.POST, instance=slbn)
         if form.is_valid():
             form.save()
             return redirect('/thaydoi')
 
     context = {'form': form}
     return render(request, 'web_core/thaydoi_slbn.html', context)
+
+
+def thaydoi_tienkham(request):
+    tien_kham = THAMSO.objects.get(loai='Tiền khám')
+    now_val = THAMSO.objects.filter(loai='Tiền khám').values_list('now_value', flat=True)[0]
+    form = ThayDoiGiaTriForm(initial={'loai': tien_kham, 'now_value': now_val})
+
+    if request.method == 'POST':
+        form = ThayDoiGiaTriForm(request.POST, instance=tien_kham)
+        if form.is_valid():
+            form.save()
+            return redirect('/thaydoi')
+
+    context = {'form': form}
+    return render(request, 'web_core/thaydoi_tienkham.html', context)

@@ -12,4 +12,5 @@ urlpatterns = [
     path('lapbaocao/sudungthuoc/', views.baocao_sudungthuoc, name='quanli_lapbaocao_bcsdt'),
     path('thaydoi/', views.thaydoi_quydinh, name='quanli_thaydoi'),
     path('thaydoi/soluongbenhnhan', views.thaydoi_slbn, name='quanli_thaydoi_slbn'),
+    path('thaydoi/tienkham', views.thaydoi_tienkham, name='quanli_thaydoi_tienkham'),
 ]
