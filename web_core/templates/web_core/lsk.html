@@ -77,7 +77,7 @@
             <table class='table table-sm'>
 
                 <tr class="table-head">
-                    <!--<th class="small-content">STT</th>-->
+                    <th class="small-content">STT</th>
                     <th class="small-content">ID</th>
                     <th class="mid-content">Họ tên</th>
                     <th class="small-content">Ngày khám</th>
@@ -85,9 +85,9 @@
                     <th class="large-content">Triệu chứng</th>
                 </tr>
 
-                {% for lsk in lsk %}
+                {% for index,lsk in enum_lsk %}
                 <tr>
-                    <!--<th class="small-content">{{index}}</th>-->
+                    <th class="small-content">{{index}}</th>
                     <th class="mid-content">{{lsk.id_benhnhan.id}}</th>
                     <th class="small-content">{{lsk.id_benhnhan.ho_ten}}</th>
                     <th class="small-content">{{lsk.ngay_kham|date:"d/m/Y"}}</th>

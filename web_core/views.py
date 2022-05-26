@@ -62,22 +62,29 @@ def dskb(request):
 @login_required(login_url='login')
 def lsk(request):
     lsk = PHIEUKHAM.objects.all().order_by('ngay_kham')
-    #enum_lsk = enumerate(lsk, start = 1)
+    enum_lsk = enumerate(lsk, start = 1)
+    myFilter = LichSuKhamFilter()
+    if request.GET.__contains__('ID'):
+        myFilter = LichSuKhamFilter(request.GET,queryset=lsk)
+        lsk = myFilter.qs
+        enum_lsk = enumerate(lsk, start = 1)
 
-    myFilter = LichSuKhamFilter(request.GET,queryset=lsk)
-    lsk = myFilter.qs
-    #enum_lsk_filter = enumerate(lsk, start = 1)
-
-    context ={'lsk': lsk, 'myFilter':myFilter}
+    context ={'lsk': lsk, 'myFilter':myFilter, 'enum_lsk': enum_lsk}
     return render(request, 'web_core/lsk.html',context)
 
 def lsk_guest(request):
-    lsk_guest = PHIEUKHAM.objects.all().order_by('ngay_kham')
-    #enum_lsk = enumerate(lsk, start = 1)
-
-    myFilter = LichSuKhamFilter(request.GET,queryset=lsk_guest)
-    lsk_guest = myFilter.qs
-    #enum_lsk_filter = enumerate(lsk, start = 1)
-
-    context ={'lsk_guest': lsk_guest,'myFilter':myFilter}
+    lsk_guest = None
+    myFilter = LichSuKhamFilter()
+    enum_lsk_guest = None
+    if request.method == 'GET' and 'ID' in request.GET:
+        ID = request.GET['ID']
+        if ID :
+            lsk_guest = PHIEUKHAM.objects.all().order_by('ngay_kham')
+            myFilter = LichSuKhamFilter(request.GET,queryset=lsk_guest)
+            lsk_guest = myFilter.qs
+            enum_lsk_guest = enumerate(lsk_guest, start = 1)
+        else:
+            lsk_guest = None
+        
+    context ={'lsk_guest': lsk_guest, 'myFilter':myFilter,'enum_lsk_guest':enum_lsk_guest}
     return render(request, 'web_core/lsk_guest.html',context)
