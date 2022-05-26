@@ -5,6 +5,8 @@ from .models import *
 
 # utils
 from datetime import datetime as dt
+from django.db.models import Count, Sum
+
 
 # forms import
 # from .forms import benhnhan_form
@@ -50,10 +52,24 @@ def baocao_doanhthuthang(request):
     ty_le = [round(100 * x / sum(doanh_thu), 2) for x in doanh_thu]
     stt = [x for x in range(len(ngay))]
 
-    context = {'thang': thang, 'stt': stt, 'ngay': ngay, 'so_benh_nhan': so_benh_nhan, 'doanh_thu': doanh_thu, 'ty_le': ty_le}
+    context = {'thang': thang, 'stt': stt, 'ngay': ngay, 'so_benh_nhan': so_benh_nhan, 'doanh_thu': doanh_thu,
+               'ty_le': ty_le}
     return render(request, 'web_core/baocaodoanhthuthang.html', context=context)
 
 
 def baocao_sudungthuoc(request):
-    context = {}
+    thang = dt.today().strftime('%m/%Y')
+    queryset_ngay = PHIEUKHAM.objects.filter(ngay_kham__month=dt.today().date().month).values_list('id', flat=True)
+    sdthuoc = SUDUNGTHUOC.objects.filter(id_phieukham__in=queryset_ngay)
+
+    rows = (sdthuoc
+            .values('thuoc', 'don_vi')
+            .annotate(so_luong=Sum('soluong'))
+            .annotate(so_lan_dung=Count('thuoc'))
+            .order_by()
+            )
+
+    stt = [x for x in range(len(rows))]
+
+    context = {'thang': thang, 'stt': stt, 'rows': rows}
     return render(request, 'web_core/baocaosudungthuoc.html', context=context)
