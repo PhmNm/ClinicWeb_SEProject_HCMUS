@@ -172,3 +172,34 @@ def thaydoi_dvt_xoa(request, ten):
 
     context = {'dvt': dvt}
     return render(request, 'web_core/thaydoi_dvt_xoa.html', context)
+
+
+def thaydoi_cachdung(request):
+    ds_cach_dung = DANHMUC.objects.filter(loai='Cách dùng').values_list('ten', flat=True)
+    context = {'ds_cach_dung': ds_cach_dung}
+    return render(request, 'web_core/thaydoi_cachdung.html', context)
+
+
+def thaydoi_cachdung_them(request):
+    cach_dung = DANHMUC(loai='Cách dùng')
+    form = DanhMucForm()
+
+    if request.method == 'POST':
+        form = DanhMucForm(request.POST, instance=cach_dung)
+        if form.is_valid():
+            form.save()
+            return redirect('/thaydoi/cachdung')
+
+    context = {'form': form}
+    return render(request, 'web_core/thaydoi_cachdung_them.html', context)
+
+
+def thaydoi_cachdung_xoa(request, ten):
+    cach_dung = DANHMUC.objects.get(ten=ten)
+
+    if request.method == 'POST':
+        cach_dung.delete()
+        return redirect('/thaydoi/cachdung')
+
+    context = {'cach_dung': cach_dung}
+    return render(request, 'web_core/thaydoi_cachdung_xoa.html', context)

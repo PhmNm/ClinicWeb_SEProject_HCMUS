@@ -19,4 +19,7 @@ urlpatterns = [
     path('thaydoi/donvitinh', views.thaydoi_dvt, name='quanli_thaydoi_dvt'),
     path('thaydoi/donvitinh/them', views.thaydoi_dvt_them, name='quanli_thaydoi_dvt_them'),
     path('thaydoi/donvitinh/xoa/<str:ten>', views.thaydoi_dvt_xoa, name='quanli_thaydoi_dvt_xoa'),
+    path('thaydoi/cachdung', views.thaydoi_cachdung, name='quanli_thaydoi_cachdung'),
+    path('thaydoi/cachdung/them', views.thaydoi_cachdung_them, name='quanli_thaydoi_cachdung_them'),
+    path('thaydoi/cachdung/xoa/<str:ten>', views.thaydoi_cachdung_xoa, name='quanli_thaydoi_cachdung_xoa'),
 ]

@@ -1,0 +1,106 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+    <style>
+        .col-md-2 {
+            padding: 0;
+        }
+
+        .col-md-10 {
+            margin-top: 3rem;
+        }
+
+        .card-body {
+            padding-bottom: 0;
+        }
+
+        .table-title {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .btn-text-right {
+            text-align: right;
+        }
+
+        .btn.add-btn {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            margin-right: 20px;
+            color: #fff;
+            background-color: #399;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        th.small-content {
+            width: 150px;
+        }
+
+        th.large-content {
+            width: 450px;
+        }
+
+        .table-head {
+            color: #ffff;
+            background-color: #399;
+        }
+
+        .btn-text-right {
+            text-align: right;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            color: #399;
+            border-color: #399;
+            border-width: 1px;
+        }
+
+        .my-table {
+            counter-reset: stt-counter 0;
+        }
+
+        .my-table .stt::before {
+            counter-increment: stt-counter 1;
+            content: counter(stt-counter) " ";
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'web_core/sidebar.html' %}
+        </div>
+        <div class="col-md-10">
+            <h2 class="table-title" style>Danh sách cách dùng</h2>
+            <div class="btn-text-right">
+                <a class='btn add-btn' href="{% url 'quanli_thaydoi_cachdung_them' %}">Thêm cách dùng</a>
+            </div>
+            <div class="card card-body">
+                <table class='table my-table'>
+                    <tr class="table-head">
+                        <th class="small-content">STT</th>
+                        <th class="large-content">Cách dùng</th>
+                        <th class="small-content">Thao tác</th>
+                    </tr>
+                    {% for cach_dung in ds_cach_dung %}
+                        <tr>
+                            <th class="small-content stt"></th>
+                            <th class="large-content">{{ cach_dung }}</th>
+                            <th class="small-content">
+                                <a class="btn-sm btn-danger"
+                                   href="{% url 'quanli_thaydoi_cachdung_xoa' cach_dung %}">Xoá</a>
+                            </th>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
