@@ -130,7 +130,7 @@ python-3.9.6
 - Nếu trong quá trình deploy xảy ra lỗi buildpack (lỗi về environment), ta vào settings của app trên website để add buildpack vào app (add Python)
 - Tạo Procfile chứa nội dung như sau:
 
-> Lưu ý: Profile không có đuôi filetype
+> Lưu ý: Procfile không có đuôi filetype
 
 ```file content
 web: gunicorn clinic_web.wsgi --log-file -
