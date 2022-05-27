@@ -52,7 +52,6 @@ def dskb(request):
     today = dt.today().date()
     form = dskb_filter
     if request.method == 'POST':
-        # today = dt.strptime(request.POST['date'],'%d/%m/%Y')
         form = dskb_filter(request.POST)
         if form.is_valid() and form['ngay_kham'].data != "":
             today = dt.strptime(form['ngay_kham'].data,'%d/%m/%Y')
@@ -60,7 +59,6 @@ def dskb(request):
     benhnhans = []
     for benhnhan in phieukhams:
         benhnhans.append(BENHNHAN.objects.get(id=benhnhan.id_benhnhan.id))
-    # benhnhans = BENHNHAN.objects.filter(id__in=[bn.id_benhnhan.id for bn in phieukhams])
     count = len(phieukhams)
     enum_dskb = enumerate(benhnhans,start = 1)
     context = {'enum_dskb':enum_dskb, 'count':count, 'max_benhnhan':max_benhnhan, 'today':today.strftime('%d/%m/%Y'), 'form': form}
@@ -102,3 +100,20 @@ def del_benhnhan(request, id):
         return redirect('/dsbn')
     context = {'benhnhan':benhnhan}
     return render(request,'web_core/del_benhnhan.html', context)
+@login_required(login_url='login')
+def xuathoadon(request):
+    phieukhams = PHIEUKHAM.objects.all()
+    enum_xhd = enumerate(phieukhams,start = 1)
+    context = {'phieukhams':phieukhams, 'enum_xhd':enum_xhd}
+    return render(request, 'web_core/xuathoadon.html', context)
+
+@login_required(login_url='login')
+def hoadon(request, pk):
+    phieukham = PHIEUKHAM.objects.get(id=pk)
+    tienkham = THAMSO.objects.get(loai='Tiền khám').now_value
+    sdthuocs = SUDUNGTHUOC.objects.filter(id_phieukham=phieukham)   
+    tienthuoc = 0
+    for sdthuoc in sdthuocs:
+        tienthuoc += sdthuoc.soluong * sdthuoc.thuoc.gia_tri
+    context = {'phieukham':phieukham, 'tienkham':tienkham, 'tienthuoc':tienthuoc}
+    return render(request, 'web_core/hoadon.html', context)

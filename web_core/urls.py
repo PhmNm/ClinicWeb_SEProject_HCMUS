@@ -14,4 +14,6 @@ urlpatterns = [
     path('them_bn', views.add_benhnhan, name='quanli_them_benhnhan'),
     path('sua_bn/<str:id>', views.edit_benhnhan, name='quanli_sua_benhnhan'),
     path('xoa_bn/<str:id>', views.del_benhnhan, name='quanli_xoa_benhnhan'),
+    path('xuathoadon', views.xuathoadon, name='quanli_xuathoadon'),
+    path('hoadon/<str:pk>/', views.hoadon, name='quanli_xuathoadon_hoadon'),
 ]
