@@ -1,0 +1,5 @@
+Django<=4.0.4
+django-filter==21.1
+shortuuid==1.0.9
+whitenoise==6.0.0
+gunicorn==20.1.0

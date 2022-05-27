@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9vvgleq5r@ymr^t%6zxbuaavayz%hs0j4i=*-fclevo&4((c+)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['clinic-web-project.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'web_core',
 
     'django_filters',
+    'shortuuid',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,6 +130,7 @@ es_formats.DATE_INPUT_FORMATS = ["%d/%m/%Y"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+STATIC_ROOT = BASE_DIR / 'web_core/staticfies'
 
 STATIC_URL = 'static/'
 
