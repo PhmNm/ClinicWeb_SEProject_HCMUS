@@ -1,7 +1,6 @@
 from django.forms import ModelForm, DateInput, ValidationError, DateField
 from .models import *
 
-
 class benhnhan_form(ModelForm):
     ngay_sinh = DateField(
         label='Ngày sinh',
@@ -33,3 +32,12 @@ class sudungthuoc_form(ModelForm):
     class Meta:
         model = SUDUNGTHUOC
         fields = '__all__'
+class ThayDoiGiaTriForm(ModelForm):
+    class Meta:
+        model = THAMSO
+        fields = ['now_value']
+
+class DanhMucForm(ModelForm):
+    class Meta:
+        model = DANHMUC
+        fields = ['ten']

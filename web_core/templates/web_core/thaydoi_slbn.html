@@ -1,0 +1,77 @@
+{% extends 'web_core/main.html' %}
+{% block content %}
+
+    <style>
+        .errorlist {
+            font-weight: bold;
+            color: red;
+            list-style-type: none;
+        }
+
+        .form-container {
+            text-align: center;
+        }
+
+        .form-container .card.card-body {
+            padding-right: 50px;
+            padding-left: 50px;
+        }
+
+        .form-title {
+            text-transform: uppercase;
+            margin: 16px 10px 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 30px 0 10px;
+        }
+
+        .my-form-btn {
+            font-weight: bold;
+            border-radius: 6px;
+            padding: 10px 14px;
+        }
+
+        .my-form-btn:hover {
+            opacity: 0.8;
+        }
+
+        .save-btn {
+            background-color: #399;
+            border-width: 0;
+            color: white;
+        }
+
+        .back-btn,
+        .back-btn:hover {
+            text-decoration: none;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'web_core/sidebar.html' %}
+        </div>
+        <div class="col-md-10">
+            <div class="d-flex justify-content-center h-100" style="margin-top:50px;">
+                <div class="form-container">
+                    <div class="card card-body">
+                        <h3 class="form-title">Số lượng bệnh nhân tối đa trong ngày</h3>
+                        <form class="my-form" action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-content">
+                                {{ form.as_p }}
+                            </div>
+                            <div class="btn-container">
+                                <input class="my-form-btn save-btn" type="submit" value="Lưu">
+                                <a class='my-form-btn back-btn btn-danger' href="{% url 'quanli_thaydoi' %}">Hủy</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

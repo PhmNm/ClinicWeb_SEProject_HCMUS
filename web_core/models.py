@@ -1,18 +1,17 @@
-from sre_parse import CATEGORIES
 from django.db import models
 from django.contrib.auth.models import User
 from shortuuid.django_fields import ShortUUIDField
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-# Create your models here.
 
+# Create your models here.
 class BENHNHAN(models.Model):
     GIOITINH = (
-        ('Nam','Nam'),
-        ('Nữ','Nữ'),
+        ('Nam', 'Nam'),
+        ('Nữ', 'Nữ'),
     )
     id = ShortUUIDField(
-        verbose_name = 'ID bệnh nhân',
+        verbose_name='ID bệnh nhân',
         length=10,
         max_length=40,
         prefix="BN",
@@ -26,19 +25,22 @@ class BENHNHAN(models.Model):
         line = str(self.id) + ' | ' + self.ho_ten
         return line
 
+
 class DANHMUC(models.Model):
     CATEGORIES = (
-        ('Bệnh','Bệnh'),
-        ('Thuốc','Thuốc'),
-        ('Đơn vị','Đơn vị'),
-        ('Cách dùng','Cách dùng'),
+        ('Bệnh', 'Bệnh'),
+        ('Thuốc', 'Thuốc'),
+        ('Đơn vị', 'Đơn vị'),
+        ('Cách dùng', 'Cách dùng'),
     )
-    ten = models.CharField('Tên', max_length = 255, primary_key = True)
-    loai = models.CharField('Loại', max_length = 20, choices = CATEGORIES)
-    gia_tri = models.IntegerField('Giá trị', null = True, blank = True, validators = [MinValueValidator(0)])
+    ten = models.CharField('Tên', max_length=255, primary_key=True)
+    loai = models.CharField('Loại', max_length=20, choices=CATEGORIES)
+    gia_tri = models.IntegerField('Giá trị', null=True, blank=True, validators=[MinValueValidator(0)])
+
     def __str__(self):
         line = str(self.loai) + ' | ' + self.ten
         return line
+
 
 class SUDUNGTHUOC(models.Model):
     id_phieukham = models.ForeignKey('PHIEUKHAM', on_delete = models.CASCADE, verbose_name = 'ID phiếu khám', null = True)
@@ -49,7 +51,7 @@ class SUDUNGTHUOC(models.Model):
 
 class PHIEUKHAM(models.Model):
     id = ShortUUIDField(
-        verbose_name = 'ID phiếu khám',
+        verbose_name='ID phiếu khám',
         length=10,
         max_length=40,
         prefix="PK",
@@ -63,12 +65,15 @@ class PHIEUKHAM(models.Model):
     def __str__(self):
         return self.id
 
+
 class THAMSO(models.Model):
     CATEGORIES = (
-        ('Tiền khám','Tiền khám'),
-        ('Số lượng bệnh nhân tối đa','Số lượng bệnh nhân tối đa'),
+        ('Tiền khám', 'Tiền khám'),
+        ('Số lượng bệnh nhân tối đa', 'Số lượng bệnh nhân tối đa'),
     )
-    loai = models.CharField('Loại', max_length = 50, choices = CATEGORIES, primary_key=True)
-    now_value = models.IntegerField('Hiện tại',validators = [MinValueValidator(0), MaxValueValidator(10**6)], default = 0)
+    loai = models.CharField('Loại', max_length=50, choices=CATEGORIES, primary_key=True)
+    now_value = models.IntegerField('Hiện tại', validators=[MinValueValidator(0), MaxValueValidator(10 ** 6)],
+                                    default=0)
+
     def __str__(self):
         return self.loai

@@ -1,0 +1,87 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+    <style>
+        .col-md-2 {
+            padding: 0;
+        }
+
+        .col-md-10 {
+            margin-top: 3rem;
+        }
+
+        .card-body {
+            padding-bottom: 0;
+        }
+
+        .title-container {
+            margin-bottom: 32px;
+        }
+
+        .table-title {
+            display: flex;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        th.small-content {
+            vertical-align: middle;
+            width: 150px;
+        }
+
+        th.large-content {
+            vertical-align: middle;
+            width: 450px;
+        }
+
+        .table-head {
+            color: #ffff;
+            background-color: #399;
+        }
+
+        a.blue-hover:link,
+        a.blue-hover:visited {
+            color: blue;
+        }
+
+        a.blue-hover:hover,
+        a.blue-hover:active {
+            text-decoration: underline;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'web_core/sidebar.html' %}
+        </div>
+        <div class="col-md-10">
+            <div class="title-container">
+                <h2 class="table-title">Báo cáo sử dụng thuốc</h2>
+                <h2 class="table-title">Tháng {{ thang }}</h2>
+            </div>
+            <div class="card card-body">
+                <table class='table table-sm'>
+                    <tr class="table-head">
+                        <th class="small-content">STT</th>
+                        <th class="large-content">Thuốc</th>
+                        <th class="small-content">Đơn vị tính</th>
+                        <th class="small-content">Số lượng</th>
+                        <th class="small-content">Số lần dùng</th>
+                    </tr>
+                    {% for i in stt %}
+                    <tr>
+                        <th class="small-content">{{ stt|index:i|add:1 }}</th>
+                        <th class="large-content">{{ rows|index:i|index:'thuoc' }}</th>
+                        <th class="small-content">{{ rows|index:i|index:'don_vi' }}</th>
+                        <th class="small-content">{{ rows|index:i|index:'so_luong' }}</th>
+                        <th class="small-content">{{ rows|index:i|index:'so_lan_dung' }}</th>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
