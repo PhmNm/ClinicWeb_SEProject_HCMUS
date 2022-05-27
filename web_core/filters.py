@@ -1,5 +1,7 @@
 from django.forms import DateField, Form, DateInput, ValidationError
 from datetime import datetime as dt
+from django_filters import CharFilter, FilterSet
+from .models import *
 
 class dskb_filter(Form):
     ngay_kham = DateField(
@@ -11,3 +13,9 @@ class dskb_filter(Form):
         label_suffix=' (Định dạng nhập: "dd/mm/YYYY")',
         error_messages={'invalid':'Yêu cầu nhập đúng định dạng'},
     )
+
+class LichSuKhamFilter(FilterSet):
+    ID = CharFilter(field_name="id_benhnhan",lookup_expr='exact')
+    class Meta:
+        model = PHIEUKHAM
+        fields = ''

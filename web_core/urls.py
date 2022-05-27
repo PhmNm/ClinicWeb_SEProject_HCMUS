@@ -16,4 +16,6 @@ urlpatterns = [
     path('xoa_bn/<str:id>', views.del_benhnhan, name='quanli_xoa_benhnhan'),
     path('xuathoadon', views.xuathoadon, name='quanli_xuathoadon'),
     path('hoadon/<str:pk>/', views.hoadon, name='quanli_xuathoadon_hoadon'),
+    path('lsk',views.lsk, name='quanli_lsk'),
+    path('lsk_guest',views.lsk_guest, name='lsk_guest'),
 ]
