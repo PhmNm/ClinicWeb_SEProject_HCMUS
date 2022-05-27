@@ -34,17 +34,14 @@
         .table td,
         .table th {
             vertical-align: middle;
-        }
-
-        th {
             text-align: center;
         }
 
-        th.small-content {
+        .small-content {
             width: 150px;
         }
 
-        th.large-content {
+        .large-content {
             width: 450px;
         }
 
@@ -91,12 +88,12 @@
                     </tr>
                     {% for dvt in dsdvt %}
                         <tr>
-                            <th class="small-content stt"></th>
-                            <th class="large-content">{{ dvt }}</th>
-                            <th class="small-content">
+                            <td class="small-content stt"></td>
+                            <td class="large-content">{{ dvt }}</td>
+                            <td class="small-content">
                                 <a class="btn-sm btn-danger"
                                    href="{% url 'quanli_thaydoi_dvt_xoa' dvt %}">Xoá</a>
-                            </th>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>

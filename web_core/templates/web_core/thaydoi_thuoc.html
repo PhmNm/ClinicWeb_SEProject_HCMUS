@@ -2,6 +2,10 @@
 
 {% block content %}
     <style>
+        .m-10 {
+            margin: 0 10px;
+        }
+
         .col-md-2 {
             padding: 0;
         }
@@ -75,24 +79,28 @@
             {% include 'web_core/sidebar.html' %}
         </div>
         <div class="col-md-10">
-            <h2 class="table-title" style>Danh sách loại bệnh</h2>
+            <h2 class="table-title" style>Danh sách thuốc</h2>
             <div class="btn-text-right">
-                <a class='btn add-btn' href="{% url 'quanli_thaydoi_loaibenh_them' %}">Thêm loại bệnh</a>
+                <a class='btn add-btn' href="{% url 'quanli_thaydoi_thuoc_them' %}">Thêm loại thuốc</a>
             </div>
             <div class="card card-body">
                 <table class='table my-table'>
                     <tr class="table-head">
                         <th class="small-content">STT</th>
-                        <th class="large-content">Loại bệnh</th>
+                        <th class="large-content">Tên thuốc</th>
+                        <th class="small-content">Đơn giá</th>
                         <th class="small-content">Thao tác</th>
                     </tr>
-                    {% for benh in dslb %}
+                    {% for thuoc in ds_thuoc %}
                         <tr>
                             <td class="small-content stt"></td>
-                            <td class="large-content">{{ benh }}</td>
+                            <td class="large-content">{{ thuoc.ten }}</td>
+                            <td class="small-content">{{ thuoc.gia_tri }} VNĐ</td>
                             <td class="small-content">
-                                <a class="btn-sm btn-danger"
-                                   href="{% url 'quanli_thaydoi_loaibenh_xoa' benh %}">Xoá</a>
+                                <a class="btn-sm btn-warning m-10"
+                                   href="{% url 'quanli_thaydoi_thuoc_sua' thuoc.ten %}">Sửa</a>
+                                <a class="btn-sm btn-danger m-10"
+                                   href="{% url 'quanli_thaydoi_thuoc_xoa' thuoc.ten %}">Xoá</a>
                             </td>
                         </tr>
                     {% endfor %}

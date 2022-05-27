@@ -21,17 +21,17 @@
             margin-bottom: 32px;
         }
 
-        th {
+        .table td,
+        .table th {
+            vertical-align: middle;
             text-align: center;
         }
 
-        th.small-content {
-            vertical-align: middle;
+        .small-content {
             width: 150px;
         }
 
-        th.large-content {
-            vertical-align: middle;
+        .large-content {
             width: 450px;
         }
 
@@ -64,14 +64,14 @@
                         <th class="small-content">Thao tác</th>
                     </tr>
                     <tr>
-                        <th class="small-content">1</th>
-                        <th class="large-content">Báo cáo doanh thu tháng theo ngày</th>
-                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_lapbaocao_bcdtt' %}">Lập báo cáo</a></th>
+                        <td class="small-content">1</td>
+                        <td class="large-content">Báo cáo doanh thu tháng theo ngày</td>
+                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_lapbaocao_bcdtt' %}">Lập báo cáo</a></td>
                     </tr>
                     <tr>
-                        <th class="small-content">2</th>
-                        <th class="large-content">Báo cáo sử dụng thuốc</th>
-                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_lapbaocao_bcsdt' %}">Lập báo cáo</a></th>
+                        <td class="small-content">2</td>
+                        <td class="large-content">Báo cáo sử dụng thuốc</td>
+                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_lapbaocao_bcsdt' %}">Lập báo cáo</a></td>
                     </tr>
                 </table>
             </div>

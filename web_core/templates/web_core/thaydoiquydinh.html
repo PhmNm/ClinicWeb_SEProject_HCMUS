@@ -21,17 +21,17 @@
             margin-bottom: 32px;
         }
 
-        th {
+        .table td,
+        .table th {
+            vertical-align: middle;
             text-align: center;
         }
 
-        th.small-content {
-            vertical-align: middle;
+        .small-content {
             width: 150px;
         }
 
-        th.large-content {
-            vertical-align: middle;
+        .large-content {
             width: 450px;
         }
 
@@ -74,40 +74,40 @@
                         <th class="small-content">Thao tác</th>
                     </tr>
                     <tr>
-                        <th class="small-content stt"></th>
-                        <th class="large-content">Số lượng bệnh nhân tối đa trong ngày</th>
-                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_slbn' %}">Thay
-                            đổi</a></th>
+                        <td class="small-content stt"></td>
+                        <td class="large-content">Số lượng bệnh nhân tối đa trong ngày</td>
+                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_slbn' %}">Thay
+                            đổi</a></td>
                     </tr>
                     <tr>
-                        <th class="small-content stt"></th>
-                        <th class="large-content">Tiền khám</th>
-                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_tienkham' %}">Thay
-                            đổi </a></th>
+                        <td class="small-content stt"></td>
+                        <td class="large-content">Tiền khám</td>
+                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_tienkham' %}">Thay
+                            đổi </a></td>
                     </tr>
                     <tr>
-                        <th class="small-content stt"></th>
-                        <th class="large-content">Loại bệnh</th>
-                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_loaibenh' %}">Thay
-                            đổi </a></th>
+                        <td class="small-content stt"></td>
+                        <td class="large-content">Loại bệnh</td>
+                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_loaibenh' %}">Thay
+                            đổi </a></td>
                     </tr>
                     <tr>
-                        <th class="small-content stt"></th>
-                        <th class="large-content">Thuốc và đơn giá</th>
-                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_lapbaocao_bcsdt' %}">Thay
-                            đổi </a></th>
+                        <td class="small-content stt"></td>
+                        <td class="large-content">Thuốc và đơn giá</td>
+                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_thuoc' %}">Thay
+                            đổi </a></td>
                     </tr>
                     <tr>
-                        <th class="small-content stt"></th>
-                        <th class="large-content">Đơn vị tính</th>
-                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_dvt' %}">Thay
-                            đổi </a></th>
+                        <td class="small-content stt"></td>
+                        <td class="large-content">Đơn vị tính</td>
+                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_dvt' %}">Thay
+                            đổi </a></td>
                     </tr>
                     <tr>
-                        <th class="small-content stt"></th>
-                        <th class="large-content">Cách dùng</th>
-                        <th class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_cachdung' %}">Thay
-                            đổi </a></th>
+                        <td class="small-content stt"></td>
+                        <td class="large-content">Cách dùng</td>
+                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_cachdung' %}">Thay
+                            đổi </a></td>
                     </tr>
                 </table>
             </div>
