@@ -15,7 +15,7 @@ class dskb_filter(Form):
     )
 
 class LichSuKhamFilter(FilterSet):
-    ID = CharFilter(field_name="id_benhnhan",lookup_expr='exact')
+    ID = CharFilter(field_name="id_benhnhan",lookup_expr='exact', strip=False)
     class Meta:
         model = PHIEUKHAM
         fields = ''

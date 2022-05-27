@@ -19,8 +19,12 @@
     }
 
     .table-title {
-        display: flex;
-        justify-content: center;
+        text-align: center;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
     }
 
     th {
@@ -28,17 +32,14 @@
     }
 
     th.small-content {
-        vertical-align: middle;
         width: 150px;
     }
 
     th.mid-content {
-        vertical-align: middle;
         width: 250px;
     }
 
     th.large-content {
-        vertical-align: middle;
         width: 450px;
     }
 
@@ -69,7 +70,7 @@
         <div class="btn-text-right">
             <form method="get">
                 {{myFilter.form}}
-            <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
 
@@ -95,7 +96,7 @@
                     <th class="large-content">{{lsk.trieu_chung}}</th>
                 </tr>
                 {% endfor %}
-        
+
             </table>
         </div>
     </div>
