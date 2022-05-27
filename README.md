@@ -195,6 +195,15 @@ Kiểm tra lại git lần nữa bằng "git status" để chắc chắn trướ
 git push heroku master
 ```
 
+Nếu deploy báo không thành công, thực hiện lệnh sau để kiểm tra lỗi và tìm cách sửa lỗi tương ứng:
+
+```terminal
+heroku logs --tail --app clinic-web-project
+```
+
+Sau khi deploy báo thành công, chờ 10 đến 15 phút trước khi web được Heroku đưa lên server
+> Vì sau khi deploy link app vẫn chưa còn ở trang trống
+
 # LINK DEMO
 
 > NOT HAVE YET
