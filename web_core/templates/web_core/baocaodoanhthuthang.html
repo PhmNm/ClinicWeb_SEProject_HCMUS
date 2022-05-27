@@ -25,17 +25,17 @@
             text-transform: uppercase;
         }
 
-        th {
+        .table td,
+        .table th {
+            vertical-align: middle;
             text-align: center;
         }
 
-        th.small-content {
-            vertical-align: middle;
+        .small-content {
             width: 150px;
         }
 
-        th.mid-content {
-            vertical-align: middle;
+        .mid-content {
             width: 250px;
         }
 
@@ -74,11 +74,11 @@
                     </tr>
                     {% for i in stt %}
                     <tr>
-                        <th class="small-content">{{ stt|index:i|add:1 }}</th>
-                        <th class="mid-content">{{ ngay|index:i|date:'d/m/Y' }}</th>
-                        <th class="small-content">{{ so_benh_nhan|index:i }}</th>
-                        <th class="mid-content">{{ doanh_thu|index:i }} VNĐ</th>
-                        <th class="small-content">{{ ty_le|index:i }} %</th>
+                        <td class="small-content">{{ stt|index:i|add:1 }}</td>
+                        <td class="mid-content">{{ ngay|index:i|date:'d/m/Y' }}</td>
+                        <td class="small-content">{{ so_benh_nhan|index:i }}</td>
+                        <td class="mid-content">{{ doanh_thu|index:i }} VNĐ</td>
+                        <td class="small-content">{{ ty_le|index:i }} %</td>
                     </tr>
                     {% endfor %}
                 </table>

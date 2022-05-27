@@ -2,6 +2,10 @@
 
 {% block content %}
     <style>
+        .m-10 {
+            margin: 0 10px;
+        }
+
         .col-md-2 {
             padding: 0;
         }
@@ -93,9 +97,9 @@
                             <td class="large-content">{{ thuoc.ten }}</td>
                             <td class="small-content">{{ thuoc.gia_tri }} VNĐ</td>
                             <td class="small-content">
-                                <a class="btn-sm btn-warning"
+                                <a class="btn-sm btn-warning m-10"
                                    href="{% url 'quanli_thaydoi_thuoc_sua' thuoc.ten %}">Sửa</a>
-                                <a class="btn-sm btn-danger"
+                                <a class="btn-sm btn-danger m-10"
                                    href="{% url 'quanli_thaydoi_thuoc_xoa' thuoc.ten %}">Xoá</a>
                             </td>
                         </tr>

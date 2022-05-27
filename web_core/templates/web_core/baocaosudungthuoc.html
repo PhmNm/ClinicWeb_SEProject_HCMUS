@@ -24,17 +24,17 @@
             text-transform: uppercase;
         }
 
-        th {
+        .table td,
+        .table th {
+            vertical-align: middle;
             text-align: center;
         }
 
-        th.small-content {
-            vertical-align: middle;
+        .small-content {
             width: 150px;
         }
 
-        th.large-content {
-            vertical-align: middle;
+        .large-content {
             width: 450px;
         }
 
@@ -73,11 +73,11 @@
                     </tr>
                     {% for i in stt %}
                     <tr>
-                        <th class="small-content">{{ stt|index:i|add:1 }}</th>
-                        <th class="large-content">{{ rows|index:i|index:'thuoc' }}</th>
-                        <th class="small-content">{{ rows|index:i|index:'don_vi' }}</th>
-                        <th class="small-content">{{ rows|index:i|index:'so_luong' }}</th>
-                        <th class="small-content">{{ rows|index:i|index:'so_lan_dung' }}</th>
+                        <td class="small-content">{{ stt|index:i|add:1 }}</td>
+                        <td class="large-content">{{ rows|index:i|index:'thuoc' }}</td>
+                        <td class="small-content">{{ rows|index:i|index:'don_vi' }}</td>
+                        <td class="small-content">{{ rows|index:i|index:'so_luong' }}</td>
+                        <td class="small-content">{{ rows|index:i|index:'so_lan_dung' }}</td>
                     </tr>
                     {% endfor %}
                 </table>

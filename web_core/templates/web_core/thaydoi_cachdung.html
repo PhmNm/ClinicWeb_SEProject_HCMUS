@@ -34,17 +34,14 @@
         .table td,
         .table th {
             vertical-align: middle;
-        }
-
-        th {
             text-align: center;
         }
 
-        th.small-content {
+        .small-content {
             width: 150px;
         }
 
-        th.large-content {
+        .large-content {
             width: 450px;
         }
 
@@ -91,12 +88,12 @@
                     </tr>
                     {% for cach_dung in ds_cach_dung %}
                         <tr>
-                            <th class="small-content stt"></th>
-                            <th class="large-content">{{ cach_dung }}</th>
-                            <th class="small-content">
+                            <td class="small-content stt"></td>
+                            <td class="large-content">{{ cach_dung }}</td>
+                            <td class="small-content">
                                 <a class="btn-sm btn-danger"
                                    href="{% url 'quanli_thaydoi_cachdung_xoa' cach_dung %}">Xoá</a>
-                            </th>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>
