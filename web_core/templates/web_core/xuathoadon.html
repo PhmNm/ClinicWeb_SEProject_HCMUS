@@ -14,31 +14,32 @@
         margin-top: 3rem;
     }
 
+    .card-body {
+        padding-bottom: 0rem;
+    }
+
     .table-title {
-        display: flex;
-        justify-content: center;
+        text-align: center;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
     }
 
     th {
         text-align: center;
     }
 
-    .card-body {
-        padding-bottom: 0rem;
-    }
-
     th.small-content {
-        vertical-align: middle;
         width: 150px;
     }
 
     th.mid-content {
-        vertical-align: middle;
         width: 250px;
     }
 
     th.large-content {
-        vertical-align: middle;
         width: 450px;
     }
 
@@ -49,8 +50,6 @@
 
     .btn.add-btn {
         font-weight: bold;
-        margin-bottom: 0.5rem;
-        margin-right: 20px;
         color: #fff;
         background-color: #399;
     }
@@ -77,9 +76,9 @@
                     <th class="mid-content">Tên bệnh nhân</th>
                     <th class="small-content">ID phiếu khám</th>
                     <th class="small-content">Ngày khám</th>
-                    <th class="small-content"></th>
+                    <th class="small-content">Thao tác</th>
                 </tr>
-                
+
                 {% for index, phieukham in enum_xhd %}
                 <tr>
                     <th class="small-content">{{index}}</th>
@@ -87,9 +86,7 @@
                     <th class="small-content">{{phieukham.id}}</th>
                     <th class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
                     <th class="small-content">
-                        <div class="btn-text-right">
-                            <a class='btn add-btn' href="{% url 'quanli_xuathoadon_hoadon' phieukham.id%}">Xuất</a>
-                        </div>
+                        <a class='btn add-btn' href="{% url 'quanli_xuathoadon_hoadon' phieukham.id%}">Xuất</a>
                     </th>
                 </tr>
                 {% endfor %}

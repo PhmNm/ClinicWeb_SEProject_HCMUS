@@ -81,7 +81,6 @@
         display: table;
         clear: both;
     }
-
 </style>
 <div class="row">
     <div class="col-md-2">
@@ -98,7 +97,7 @@
                 <div class="column">
                     <p>Ngày khám: {{phieukham.ngay_kham|date:"d/m/Y"}}</p>
                 </div>
-            </div>  
+            </div>
 
             <div class="row">
                 <div class="column">
@@ -107,12 +106,12 @@
                 <div class="column">
                     <p>Tiền thuốc: {{tienthuoc}} đồng</p>
                 </div>
-            </div>  
+            </div>
         </div>
         <div class="d-flex justify-content-center form_container">
             <div class="row">
-                <a class="btn add-btn" href="#" >Quay lại</a>
-                <a class="btn add-btn" href="#" >In</a>
+                <a class="btn add-btn" href="{% url 'quanli_xuathoadon' %}">Quay lại</a>
+                <a class="btn add-btn" href="#">In</a>
             </div>
         </div>
     </div>
