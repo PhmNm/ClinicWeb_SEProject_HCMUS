@@ -14,7 +14,6 @@ class benhnhan_form(ModelForm):
         widgets = {
             'ngay_sinh': DateInput(format="%d/%m/%Y"),
         }
-
     def clean(self):
         benhnhan = BENHNHAN.objects.filter(
             ho_ten=self.cleaned_data.get("ho_ten"),
@@ -24,3 +23,13 @@ class benhnhan_form(ModelForm):
             )
         if benhnhan.exists():
             raise ValidationError("Bệnh nhân đã tồn tại")
+
+class phieukham_form(ModelForm):
+    class Meta:
+        model = PHIEUKHAM
+        fields = '__all__'
+
+class sudungthuoc_form(ModelForm):
+    class Meta:
+        model = SUDUNGTHUOC
+        fields = '__all__'

@@ -1,0 +1,52 @@
+{% extends 'web_core/main.html' %}
+{$ load static %}
+{% block content %}
+
+
+<style>
+    .btn.form-btn {
+        display: flex;
+        justify-content: center;
+    }
+
+    input[type=submit] {
+        font-weight: bold;
+        border-radius: 6px;
+        border-width: 0px;
+        padding: 10px 14px;
+        margin: auto;
+        margin-top: 5px;
+    }
+
+    .btn.back-btn {
+        font-weight: bold;
+        background-color: white;
+        border-color: black;
+        border-radius: 6px;
+        border-width: 1px;
+        color: black;
+        padding: 8px 16px;
+        margin: auto;
+        right: 0;
+    }
+</style>
+<div class="d-flex justify-content-center h-100" style="margin-top:50px;">
+    <div class="user_card">
+        <div class="d-flex justify-content-center">
+        </div>
+        <div class="d-flex justify-content-center form_container">
+            <div class="card card-body">
+                <p>Bạn có chắc muốn xoá phiếu khám {{phieukham}} ?</p>
+                <form action="{% url 'quanli_xoa_phieukham' phieukham.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="btn form-btn">
+                        <input class="btn btn-sm btn-danger" type="submit" value="Xác nhận">
+                        <a class="btn back-btn" href="{% url 'quanli_dspk' %}"> Trở lại </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+
+<style>
+    .text_White{
+        color: #fff !important;
+    }
+
+    .row.sub {
+        margin-top: 2rem;
+    }
+
+    .col-md-2 {
+        padding: 0;
+    }
+
+    .col-md-10 {
+        margin-top: 3rem;
+    }
+
+    .card-body {
+        padding-bottom: 0rem;
+    }
+
+    .table-title {
+        display: flex;
+        justify-content: center;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    th.small-content {
+        vertical-align: middle;
+        width: 150px;
+    }
+
+    th.mid-content {
+        vertical-align: middle;
+        width: 250px;
+    }
+
+    th.large-content {
+        vertical-align: middle;
+        width: 190px;
+    }
+
+    .table-head {
+        color: #ffff;
+        background-color: #399;
+    }
+
+    .btn-text-right {
+        text-align: right;
+    }
+
+    .btn.edit-btn {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        color: #fff;
+        background-color: rgb(255, 204, 0);
+    }
+
+    .btn.del-btn {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        margin-right: 20px;
+        cursor: pointer;
+        color: #fff;
+        background-color: rgb(255, 37, 37)
+    }
+
+    .btn.view-btn {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        color: #fff;
+        background-color: #399;
+    }
+
+    .btn.add-btn{
+        margin-bottom: 15px;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+        background-color: #399;
+        border-radius: 10px;
+    }
+
+    .btn:hover {
+        background-color: #fff;
+        color: rgb(0, 0, 0) !important;
+        border-color: #399;
+    }
+</style>
+<div class="row">
+    <div class="col-md-2">
+        {% include 'web_core/sidebar.html' %}
+
+    </div>
+    <div class="col-md-10">
+        <h2 class="table-title" style>CHI TIẾT PHIẾU KHÁM</h2>   
+        <div class="card card-body">  
+            
+            <table class='table table-sm'>      
+                <tr>
+                    <th class="large-content table-head" >Họ tên</th>
+                    <th class="large-content">{{phieukham.id_benhnhan.ho_ten}}</th>
+                    <th class="large-content"></th>
+                    <th class="large-content table-head">Ngày khám</th>
+                    <th class="large-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
+                </tr>
+                <tr>
+                    <th class="large-content table-head">Triệu chứng</th>
+                    <th class="large-content">{{phieukham.trieu_chung}}</th>
+                    <th class="large-content"></th>
+                    <th class="large-content table-head">Dự đoán loại bệnh</th>
+                    <th class="large-content">{{phieukham.loai_benh}}</th>
+                </tr>
+
+                <tr class="table-head">
+                    <th class="small-content">STT</th>
+                    <th class="mid-content">Thuốc</th>
+                    <th class="small-content">Đơn vị</th>
+                    <th class="small-content">Số lượng</th>
+                    <th class="mid-content">Cách dùng</th>
+                </tr>
+                {% for index, sdthuoc in enum_dsthuoc %}
+                <tr>
+                    <th class="small-content">{{index}}</th>
+                    <th class="mid-content">{{sdthuoc.thuoc}}</th>
+                    <th class="small-content">{{sdthuoc.don_vi}}</th>
+                    <th class="small-content">{{sdthuoc.soluong}}</th>
+                    <th class="mid-content">{{sdthuoc.cach_dung}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
