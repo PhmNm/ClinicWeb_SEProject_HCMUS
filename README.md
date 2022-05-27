@@ -18,7 +18,7 @@ Project còn là đồ án môn học NMCNPM lớp 19_22/HCMUS với sự đóng
 
 Environments:
 
-- [Python <3.10][py-url]
+- [Python >3.9, <3.10][py-url]
 
 Code-editor:
 
@@ -220,7 +220,7 @@ Bổ sung các chức năng:
 - Tư vấn trực tuyến
 - Mở rộng quy mô trang web dựa trên quy mô phòng mạch
 
-[py-image]: https://img.shields.io/badge/Python-%3C3.10-green
+[py-image]: https://img.shields.io/badge/Python-%3E3.9%2C%20%3C3.10-green
 [py-url]: https://www.python.org/downloads/release/python-396/
 [django-image]: https://img.shields.io/badge/Django-4.0.4-green
 [django-url]: https://docs.djangoproject.com/en/4.0/
