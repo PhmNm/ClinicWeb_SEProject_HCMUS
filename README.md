@@ -1,6 +1,6 @@
 # GIỚI THIỆU PROJECT
 
-Đây là [project][pj-url] xây dựng website để quản lí một phòng mạch tư. Hỗ trợ việc nhập, xuất và xem xét dữ liệu một cách nhanh chóng và thuận tiện cho các phòng mạch có quy mô nhỏ với từ 1-2 nhân viên và lượng khách từ 30-40 người / ngày.\
+Đây là [project][pj-url] xây dựng website để quản lí một phòng mạch tư. Hỗ trợ việc nhập, xuất và xem xét dữ liệu một cách nhanh chóng và thuận tiện cho các phòng mạch có quy mô nhỏ với từ 1-2 nhân viên.\
 Project còn là đồ án môn học NMCNPM lớp 19_22/HCMUS với sự đóng góp của các thành viên:
 
 - Nguyễn Minh Phúc (19120119)
