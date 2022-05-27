@@ -42,10 +42,10 @@ class DANHMUC(models.Model):
 
 class SUDUNGTHUOC(models.Model):
     id_phieukham = models.ForeignKey('PHIEUKHAM', on_delete = models.CASCADE, verbose_name = 'ID phiếu khám', null = True)
-    thuoc = models.ForeignKey(DANHMUC, on_delete = models.CASCADE, limit_choices_to = {'loai':'Thuốc'}, related_name = 'thuoc', null = True)
+    thuoc = models.ForeignKey(DANHMUC, on_delete = models.CASCADE, limit_choices_to = {'loai':'Thuốc'}, related_name = 'thuoc', verbose_name = 'Thuốc', null = True)
     soluong = models.IntegerField('Số lượng', validators = [MinValueValidator(1)])
-    don_vi = models.ForeignKey(DANHMUC, on_delete = models.CASCADE, limit_choices_to = {'loai':'Đơn vị'}, related_name = 'don_vi', null = True)
-    cach_dung = models.ForeignKey(DANHMUC, on_delete = models.CASCADE, limit_choices_to = {'loai':'Cách dùng'}, related_name = 'cach_dung', null = True)
+    don_vi = models.ForeignKey(DANHMUC, on_delete = models.CASCADE, limit_choices_to = {'loai':'Đơn vị'}, related_name = 'don_vi', verbose_name = 'Đơn vị', null = True)
+    cach_dung = models.ForeignKey(DANHMUC, on_delete = models.CASCADE, limit_choices_to = {'loai':'Cách dùng'}, related_name = 'cach_dung', verbose_name = 'Cách dùng', null = True)
 
 class PHIEUKHAM(models.Model):
     id = ShortUUIDField(
