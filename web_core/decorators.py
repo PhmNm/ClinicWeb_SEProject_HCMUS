@@ -14,8 +14,6 @@ def allowed_users(allowed_roles=[]):
         return wrapper_func
     return decorator
 
-# def login_required(view_func):
-
 def admin_only(view_func):
     def wrapper_function(request, *args, **kwargs):
         group = None

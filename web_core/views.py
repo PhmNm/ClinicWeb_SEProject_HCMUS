@@ -218,9 +218,11 @@ def del_phieukham(request, id):
     context = {'phieukham':phieukham}
     return render(request,'web_core/del_phieukham.html', context)
 
+@admin_only
 def lap_bao_cao(request):
     return render(request, 'web_core/lapbaocao.html')
 
+@admin_only
 def baocao_doanhthuthang(request):
     thang = dt.today().strftime('%m/%Y')
     queryset_dict_ngay = PHIEUKHAM.objects.values('ngay_kham').filter(ngay_kham__month=dt.today().date().month)
@@ -256,6 +258,7 @@ def baocao_doanhthuthang(request):
                'ty_le': ty_le}
     return render(request, 'web_core/baocaodoanhthuthang.html', context=context)
 
+@admin_only
 def baocao_sudungthuoc(request):
     thang = dt.today().strftime('%m/%Y')
     queryset_ngay = PHIEUKHAM.objects.filter(ngay_kham__month=dt.today().date().month).values_list('id', flat=True)
@@ -272,9 +275,11 @@ def baocao_sudungthuoc(request):
     context = {'thang': thang, 'stt': stt, 'rows': rows}
     return render(request, 'web_core/baocaosudungthuoc.html', context=context)
 
+@admin_only
 def thaydoi_quydinh(request):
     return render(request, 'web_core/thaydoiquydinh.html')
 
+@admin_only
 def thaydoi_slbn(request):
     slbn = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa')
     form = ThayDoiGiaTriForm(initial={'loai': slbn, 'now_value': slbn.now_value})
@@ -288,6 +293,7 @@ def thaydoi_slbn(request):
     context = {'form': form}
     return render(request, 'web_core/thaydoi_slbn.html', context)
 
+@admin_only
 def thaydoi_tienkham(request):
     tien_kham = THAMSO.objects.get(loai='Tiền khám')
     form = ThayDoiGiaTriForm(initial={'loai': tien_kham, 'now_value': tien_kham.now_value})
@@ -301,11 +307,13 @@ def thaydoi_tienkham(request):
     context = {'form': form}
     return render(request, 'web_core/thaydoi_tienkham.html', context)
 
+@admin_only
 def thaydoi_loaibenh(request):
     dslb = DANHMUC.objects.filter(loai='Bệnh').values_list('ten', flat=True)
     context = {'dslb': dslb}
     return render(request, 'web_core/thaydoi_loaibenh.html', context)
 
+@admin_only
 def thaydoi_loaibenh_them(request):
     benh = DANHMUC(loai='Bệnh')
     form = DanhMucForm()
@@ -319,6 +327,7 @@ def thaydoi_loaibenh_them(request):
     context = {'form': form}
     return render(request, 'web_core/thaydoi_loaibenh_them.html', context)
 
+@admin_only
 def thaydoi_loaibenh_xoa(request, ten):
     benh = DANHMUC.objects.get(ten=ten)
 
@@ -329,11 +338,13 @@ def thaydoi_loaibenh_xoa(request, ten):
     context = {'benh': benh}
     return render(request, 'web_core/thaydoi_loaibenh_xoa.html', context)
 
+@admin_only
 def thaydoi_dvt(request):
     dsdvt = DANHMUC.objects.filter(loai='Đơn vị').values_list('ten', flat=True)
     context = {'dsdvt': dsdvt}
     return render(request, 'web_core/thaydoi_dvt.html', context)
 
+@admin_only
 def thaydoi_dvt_them(request):
     dvt = DANHMUC(loai='Đơn vị')
     form = DanhMucForm()
@@ -347,6 +358,7 @@ def thaydoi_dvt_them(request):
     context = {'form': form}
     return render(request, 'web_core/thaydoi_dvt_them.html', context)
 
+@admin_only
 def thaydoi_dvt_xoa(request, ten):
     dvt = DANHMUC.objects.get(ten=ten)
 
@@ -357,11 +369,13 @@ def thaydoi_dvt_xoa(request, ten):
     context = {'dvt': dvt}
     return render(request, 'web_core/thaydoi_dvt_xoa.html', context)
 
+@admin_only
 def thaydoi_cachdung(request):
     ds_cach_dung = DANHMUC.objects.filter(loai='Cách dùng').values_list('ten', flat=True)
     context = {'ds_cach_dung': ds_cach_dung}
     return render(request, 'web_core/thaydoi_cachdung.html', context)
 
+@admin_only
 def thaydoi_cachdung_them(request):
     cach_dung = DANHMUC(loai='Cách dùng')
     form = DanhMucForm()
@@ -375,6 +389,7 @@ def thaydoi_cachdung_them(request):
     context = {'form': form}
     return render(request, 'web_core/thaydoi_cachdung_them.html', context)
 
+@admin_only
 def thaydoi_cachdung_xoa(request, ten):
     cach_dung = DANHMUC.objects.get(ten=ten)
 
@@ -385,13 +400,13 @@ def thaydoi_cachdung_xoa(request, ten):
     context = {'cach_dung': cach_dung}
     return render(request, 'web_core/thaydoi_cachdung_xoa.html', context)
 
-
+@admin_only
 def thaydoi_thuoc(request):
     ds_thuoc = DANHMUC.objects.filter(loai='Thuốc')
     context = {'ds_thuoc': ds_thuoc}
     return render(request, 'web_core/thaydoi_thuoc.html', context)
 
-
+@admin_only
 def thaydoi_thuoc_them(request):
     thuoc = DANHMUC(loai='Thuốc')
     form = ThuocForm()
@@ -405,7 +420,7 @@ def thaydoi_thuoc_them(request):
     context = {'form': form}
     return render(request, 'web_core/thaydoi_thuoc_them.html', context)
 
-
+@admin_only
 def thaydoi_thuoc_xoa(request, ten):
     thuoc = DANHMUC.objects.get(ten=ten)
 
@@ -416,7 +431,7 @@ def thaydoi_thuoc_xoa(request, ten):
     context = {'thuoc': thuoc}
     return render(request, 'web_core/thaydoi_thuoc_xoa.html', context)
 
-
+@admin_only
 def thaydoi_thuoc_sua(request, ten):
     thuoc = DANHMUC.objects.get(ten=ten)
     form = ThuocForm(instance=thuoc, initial={'ten': thuoc.ten, 'gia_tri': thuoc.gia_tri})
