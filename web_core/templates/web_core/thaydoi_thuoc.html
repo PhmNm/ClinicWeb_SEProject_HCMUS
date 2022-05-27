@@ -1,0 +1,107 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+    <style>
+        .col-md-2 {
+            padding: 0;
+        }
+
+        .col-md-10 {
+            margin-top: 3rem;
+        }
+
+        .card-body {
+            padding-bottom: 0;
+        }
+
+        .table-title {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .btn-text-right {
+            text-align: right;
+        }
+
+        .btn.add-btn {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            margin-right: 20px;
+            color: #fff;
+            background-color: #399;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .small-content {
+            width: 150px;
+        }
+
+        .large-content {
+            width: 450px;
+        }
+
+        .table-head {
+            color: #ffff;
+            background-color: #399;
+        }
+
+        .btn-text-right {
+            text-align: right;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            color: #399;
+            border-color: #399;
+            border-width: 1px;
+        }
+
+        .my-table {
+            counter-reset: stt-counter 0;
+        }
+
+        .my-table .stt::before {
+            counter-increment: stt-counter 1;
+            content: counter(stt-counter) " ";
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-2">
+            {% include 'web_core/sidebar.html' %}
+        </div>
+        <div class="col-md-10">
+            <h2 class="table-title" style>Danh sách thuốc</h2>
+            <div class="btn-text-right">
+                <a class='btn add-btn' href="{% url 'quanli_thaydoi_thuoc_them' %}">Thêm loại thuốc</a>
+            </div>
+            <div class="card card-body">
+                <table class='table my-table'>
+                    <tr class="table-head">
+                        <th class="small-content">STT</th>
+                        <th class="large-content">Tên thuốc</th>
+                        <th class="small-content">Đơn giá</th>
+                        <th class="small-content">Thao tác</th>
+                    </tr>
+                    {% for thuoc in ds_thuoc %}
+                        <tr>
+                            <td class="small-content stt"></td>
+                            <td class="large-content">{{ thuoc.ten }}</td>
+                            <td class="small-content">{{ thuoc.gia_tri }} VNĐ</td>
+                            <td class="small-content">
+                                <a class="btn-sm btn-warning"
+                                   href="{% url 'quanli_thaydoi_thuoc_sua' thuoc.ten %}">Sửa</a>
+                                <a class="btn-sm btn-danger"
+                                   href="{% url 'quanli_thaydoi_thuoc_xoa' thuoc.ten %}">Xoá</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

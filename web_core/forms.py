@@ -12,3 +12,9 @@ class DanhMucForm(ModelForm):
     class Meta:
         model = DANHMUC
         fields = ['ten']
+
+
+class ThuocForm(ModelForm):
+    class Meta:
+        model = DANHMUC
+        fields = ['ten', 'gia_tri']

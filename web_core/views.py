@@ -8,7 +8,7 @@ from datetime import datetime as dt
 from django.db.models import Count, Sum
 
 # forms import
-from .forms import ThayDoiGiaTriForm, DanhMucForm
+from .forms import ThayDoiGiaTriForm, DanhMucForm, ThuocForm
 
 
 # forms import
@@ -84,8 +84,7 @@ def thaydoi_quydinh(request):
 
 def thaydoi_slbn(request):
     slbn = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa')
-    now_val = THAMSO.objects.filter(loai='Số lượng bệnh nhân tối đa').values_list('now_value', flat=True)[0]
-    form = ThayDoiGiaTriForm(initial={'loai': slbn, 'now_value': now_val})
+    form = ThayDoiGiaTriForm(initial={'loai': slbn, 'now_value': slbn.now_value})
 
     if request.method == 'POST':
         form = ThayDoiGiaTriForm(request.POST, instance=slbn)
@@ -99,8 +98,7 @@ def thaydoi_slbn(request):
 
 def thaydoi_tienkham(request):
     tien_kham = THAMSO.objects.get(loai='Tiền khám')
-    now_val = THAMSO.objects.filter(loai='Tiền khám').values_list('now_value', flat=True)[0]
-    form = ThayDoiGiaTriForm(initial={'loai': tien_kham, 'now_value': now_val})
+    form = ThayDoiGiaTriForm(initial={'loai': tien_kham, 'now_value': tien_kham.now_value})
 
     if request.method == 'POST':
         form = ThayDoiGiaTriForm(request.POST, instance=tien_kham)
@@ -203,3 +201,48 @@ def thaydoi_cachdung_xoa(request, ten):
 
     context = {'cach_dung': cach_dung}
     return render(request, 'web_core/thaydoi_cachdung_xoa.html', context)
+
+
+def thaydoi_thuoc(request):
+    ds_thuoc = DANHMUC.objects.filter(loai='Thuốc')
+    context = {'ds_thuoc': ds_thuoc}
+    return render(request, 'web_core/thaydoi_thuoc.html', context)
+
+
+def thaydoi_thuoc_them(request):
+    thuoc = DANHMUC(loai='Thuốc')
+    form = ThuocForm()
+
+    if request.method == 'POST':
+        form = ThuocForm(request.POST, instance=thuoc)
+        if form.is_valid():
+            form.save()
+            return redirect('/thaydoi/thuoc')
+
+    context = {'form': form}
+    return render(request, 'web_core/thaydoi_thuoc_them.html', context)
+
+
+def thaydoi_thuoc_xoa(request, ten):
+    thuoc = DANHMUC.objects.get(ten=ten)
+
+    if request.method == 'POST':
+        thuoc.delete()
+        return redirect('/thaydoi/thuoc')
+
+    context = {'thuoc': thuoc}
+    return render(request, 'web_core/thaydoi_thuoc_xoa.html', context)
+
+
+def thaydoi_thuoc_sua(request, ten):
+    thuoc = DANHMUC.objects.get(ten=ten)
+    form = ThuocForm(instance=thuoc, initial={'ten': thuoc.ten, 'gia_tri': thuoc.gia_tri})
+
+    if request.method == 'POST':
+        form = ThuocForm(request.POST, instance=thuoc)
+        if form.is_valid():
+            form.save()
+            return redirect('/thaydoi/thuoc')
+
+    context = {'ten_thuoc': thuoc.ten, 'form': form}
+    return render(request, 'web_core/thaydoi_thuoc_sua.html', context)
