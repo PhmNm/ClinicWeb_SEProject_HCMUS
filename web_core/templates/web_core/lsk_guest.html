@@ -2,15 +2,11 @@
 
 {% block content %}
 <style>
-    .row.sub {
-        margin-top: 2rem;
-    }
-
     .col-md-2 {
         padding: 0;
     }
 
-    .col-md-12 {
+    .col-md-10 {
         margin-top: 3rem;
     }
 
@@ -19,26 +15,24 @@
     }
 
     .table-title {
-        display: flex;
-        justify-content: center;
-    }
-
-    th {
         text-align: center;
     }
 
-    th.small-content {
+    .table th,
+    .table td {
         vertical-align: middle;
+        text-align: center;
+    }
+
+    .small-content {
         width: 150px;
     }
 
-    th.mid-content {
-        vertical-align: middle;
+    .mid-content {
         width: 250px;
     }
 
-    th.large-content {
-        vertical-align: middle;
+    .large-content {
         width: 450px;
     }
 
@@ -57,24 +51,19 @@
         border-color: #399;
         border-width: 1px;
     }
-
 </style>
 
 <div class="row">
-
     <div class="col-md-12">
         <h2 class="table-title" style>TRA CỨU LỊCH SỬ KHÁM BỆNH</h2>
-
         <div class="btn-text-right">
             <form method="get">
                 {{myFilter.form}}
-            <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
-
         <div class="card card-body">
             <table class='table table-sm'>
-
                 <tr class="table-head">
                     <th class="small-content">STT</th>
                     <th class="small-content">ID</th>
@@ -83,18 +72,16 @@
                     <th class="small-content">Loại bệnh</th>
                     <th class="large-content">Triệu chứng</th>
                 </tr>
-
                 {% for index,lsk in enum_lsk_guest %}
                 <tr>
-                    <th class="small-content">{{index}}</th>
-                    <th class="mid-content">{{lsk.id_benhnhan.id}}</th>
-                    <th class="small-content">{{lsk.id_benhnhan.ho_ten}}</th>
-                    <th class="small-content">{{lsk.ngay_kham|date:"d/m/Y"}}</th>
-                    <th class="large-content">{{lsk.loai_benh.ten}}</th>
-                    <th class="large-content">{{lsk.trieu_chung}}</th>
+                    <td class="small-content">{{index}}</td>
+                    <td class="mid-content">{{lsk.id_benhnhan.id}}</td>
+                    <td class="small-content">{{lsk.id_benhnhan.ho_ten}}</td>
+                    <td class="small-content">{{lsk.ngay_kham|date:"d/m/Y"}}</td>
+                    <td class="large-content">{{lsk.loai_benh.ten}}</td>
+                    <td class="large-content">{{lsk.trieu_chung}}</td>
                 </tr>
                 {% endfor %}
-    
             </table>
         </div>
     </div>

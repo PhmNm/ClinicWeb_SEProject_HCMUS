@@ -2,10 +2,6 @@
 
 {% block content %}
 <style>
-    .row.sub {
-        margin-top: 2rem;
-    }
-
     .col-md-2 {
         padding: 0;
     }
@@ -15,36 +11,7 @@
     }
 
     .table-title {
-        display: flex;
-        justify-content: center;
-    }
-
-    th {
         text-align: center;
-    }
-
-    .card-body {
-        padding-bottom: 0rem;
-    }
-
-    th.small-content {
-        vertical-align: middle;
-        width: 150px;
-    }
-
-    th.mid-content {
-        vertical-align: middle;
-        width: 250px;
-    }
-
-    th.large-content {
-        vertical-align: middle;
-        width: 450px;
-    }
-
-    .table-head {
-        color: #ffff;
-        background-color: #399;
     }
 
     .btn-text-right {
@@ -75,17 +42,10 @@
         width: 50%;
         text-align: center;
     }
-
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
 </style>
 <div class="row">
     <div class="col-md-2">
         {% include 'web_core/sidebar.html' %}
-
     </div>
     <div class="col-md-10">
         <h2 class="table-title" style>HÓA ĐƠN</h2>

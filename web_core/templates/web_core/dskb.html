@@ -22,24 +22,21 @@
         text-align: center;
     }
 
-    .table td,
-    .table th {
+    .table th,
+    .table td {
         vertical-align: middle;
-    }
-
-    th {
         text-align: center;
     }
 
-    th.small-content {
+    .small-content {
         width: 150px;
     }
 
-    th.mid-content {
+    .mid-content {
         width: 250px;
     }
 
-    th.large-content {
+    .large-content {
         width: 450px;
     }
 
@@ -127,11 +124,11 @@
                 </tr>
                 {% for index, benhnhan in enum_dskb %}
                 <tr>
-                    <th class="small-content">{{index}}</th>
-                    <th class="mid-content">{{benhnhan.ho_ten}}</th>
-                    <th class="small-content">{{benhnhan.gioi_tinh}}</th>
-                    <th class="small-content">{{benhnhan.ngay_sinh|date:"d/m/Y"}}</th>
-                    <th class="large-content">{{benhnhan.dia_chi}}</th>
+                    <td class="small-content">{{index}}</td>
+                    <td class="mid-content">{{benhnhan.ho_ten}}</td>
+                    <td class="small-content">{{benhnhan.gioi_tinh}}</td>
+                    <td class="small-content">{{benhnhan.ngay_sinh|date:"d/m/Y"}}</td>
+                    <td class="large-content">{{benhnhan.dia_chi}}</td>
                 </tr>
                 {% endfor %}
             </table>

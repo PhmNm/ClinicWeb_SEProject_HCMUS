@@ -2,10 +2,6 @@
 
 {% block content %}
 <style>
-    .row.sub {
-        margin-top: 2rem;
-    }
-
     .col-md-2 {
         padding: 0;
     }
@@ -22,24 +18,21 @@
         text-align: center;
     }
 
-    .table td,
-    .table th {
+    .table th,
+    .table td {
         vertical-align: middle;
-    }
-
-    th {
         text-align: center;
     }
 
-    th.small-content {
+    .small-content {
         width: 150px;
     }
 
-    th.mid-content {
+    .mid-content {
         width: 250px;
     }
 
-    th.large-content {
+    .large-content {
         width: 450px;
     }
 
@@ -83,15 +76,15 @@
                 </tr>
                 {% for benhnhan in dsbn %}
                 <tr>
-                    <th class="small-content">{{benhnhan.id}}</th>
-                    <th class="mid-content">{{benhnhan.ho_ten}}</th>
-                    <th class="small-content">{{benhnhan.gioi_tinh}}</th>
-                    <th class="small-content">{{benhnhan.ngay_sinh|date:"d/m/Y"}}</th>
-                    <th class="large-content">{{benhnhan.dia_chi}}</th>
-                    <th>
+                    <td class="small-content">{{benhnhan.id}}</td>
+                    <td class="mid-content">{{benhnhan.ho_ten}}</td>
+                    <td class="small-content">{{benhnhan.gioi_tinh}}</td>
+                    <td class="small-content">{{benhnhan.ngay_sinh|date:"d/m/Y"}}</td>
+                    <td class="large-content">{{benhnhan.dia_chi}}</td>
+                    <td>
                         <a class="btn edit-btn" href="{% url 'quanli_sua_benhnhan' benhnhan.id %}">Chỉnh sửa</a>
                         <a class="btn del-btn" href="{% url 'quanli_xoa_benhnhan' benhnhan.id %}">Xoá</a>
-                    </th>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>

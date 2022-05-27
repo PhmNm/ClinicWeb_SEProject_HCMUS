@@ -25,21 +25,19 @@
     .table td,
     .table th {
         vertical-align: middle;
-    }
-
-    th {
         text-align: center;
     }
 
-    th.small-content {
+
+    .small-content {
         width: 150px;
     }
 
-    th.mid-content {
+    .mid-content {
         width: 250px;
     }
 
-    th.large-content {
+    .large-content {
         width: 450px;
     }
 
@@ -73,7 +71,6 @@
                 <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
-
         <div class="card card-body">
             <table class='table table-sm'>
 
@@ -85,18 +82,16 @@
                     <th class="small-content">Loại bệnh</th>
                     <th class="large-content">Triệu chứng</th>
                 </tr>
-
                 {% for index,lsk in enum_lsk %}
                 <tr>
-                    <th class="small-content">{{index}}</th>
-                    <th class="mid-content">{{lsk.id_benhnhan.id}}</th>
-                    <th class="small-content">{{lsk.id_benhnhan.ho_ten}}</th>
-                    <th class="small-content">{{lsk.ngay_kham|date:"d/m/Y"}}</th>
-                    <th class="large-content">{{lsk.loai_benh.ten}}</th>
-                    <th class="large-content">{{lsk.trieu_chung}}</th>
+                    <td class="small-content">{{index}}</td>
+                    <td class="mid-content">{{lsk.id_benhnhan.id}}</td>
+                    <td class="small-content">{{lsk.id_benhnhan.ho_ten}}</td>
+                    <td class="small-content">{{lsk.ngay_kham|date:"d/m/Y"}}</td>
+                    <td class="large-content">{{lsk.loai_benh.ten}}</td>
+                    <td class="large-content">{{lsk.trieu_chung}}</td>
                 </tr>
                 {% endfor %}
-
             </table>
         </div>
     </div>

@@ -2,10 +2,6 @@
 
 {% block content %}
 <style>
-    .row.sub {
-        margin-top: 2rem;
-    }
-
     .col-md-2 {
         padding: 0;
     }
@@ -22,24 +18,21 @@
         text-align: center;
     }
 
-    .table td,
-    .table th {
+    .table th,
+    .table td {
         vertical-align: middle;
-    }
-
-    th {
         text-align: center;
     }
 
-    th.small-content {
+    .small-content {
         width: 150px;
     }
 
-    th.mid-content {
+    .mid-content {
         width: 250px;
     }
 
-    th.large-content {
+    .large-content {
         width: 450px;
     }
 
@@ -64,13 +57,11 @@
 <div class="row">
     <div class="col-md-2">
         {% include 'web_core/sidebar.html' %}
-
     </div>
     <div class="col-md-10">
         <h2 class="table-title" style>XUẤT HÓA ĐƠN</h2>
         <div class="card card-body">
             <table class='table table-sm'>
-
                 <tr class="table-head">
                     <th class="small-content">STT</th>
                     <th class="mid-content">Tên bệnh nhân</th>
@@ -78,16 +69,15 @@
                     <th class="small-content">Ngày khám</th>
                     <th class="small-content">Thao tác</th>
                 </tr>
-
                 {% for index, phieukham in enum_xhd %}
                 <tr>
-                    <th class="small-content">{{index}}</th>
-                    <th class="mid-content">{{phieukham.id_benhnhan.ho_ten}} </th>
-                    <th class="small-content">{{phieukham.id}}</th>
-                    <th class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
-                    <th class="small-content">
+                    <td class="small-content">{{index}}</td>
+                    <td class="mid-content">{{phieukham.id_benhnhan.ho_ten}} </td>
+                    <td class="small-content">{{phieukham.id}}</td>
+                    <td class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</td>
+                    <td class="small-content">
                         <a class='btn add-btn' href="{% url 'quanli_xuathoadon_hoadon' phieukham.id%}">Xuất</a>
-                    </th>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
