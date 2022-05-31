@@ -202,11 +202,13 @@ heroku logs --tail --app clinic-web-project
 ```
 
 Sau khi deploy báo thành công, chờ 10 đến 15 phút trước khi web được Heroku đưa lên server
-> Vì sau khi deploy link app vẫn chưa còn ở trang trống
+> Vì sau khi deploy link app vẫn còn ở trang trống
 
 # LINK DEMO
 
-> NOT HAVE YET
+Link website: [clinic-web-app](https://clinic-web-project.herokuapp.com/)
+
+Link demo: not have yet
 
 # CURRENT STATUS
 

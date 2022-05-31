@@ -1,116 +1,116 @@
 {% extends 'web_core/main.html' %}
 
 {% block content %}
-    <style>
-        .col-md-2 {
-            padding: 0;
-        }
+<style>
+    .col-md-2 {
+        padding: 0;
+    }
 
-        .col-md-10 {
-            margin-top: 3rem;
-        }
+    .col-md-10 {
+        margin-top: 50px;
+    }
 
-        .card-body {
-            padding-bottom: 0;
-        }
+    .card-body {
+        padding-bottom: 0;
+    }
 
-        .table-title {
-            display: flex;
-            justify-content: center;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-        }
+    .table-title {
+        display: flex;
+        justify-content: center;
+        text-transform: uppercase;
+        margin-bottom: 32px;
+    }
 
-        .table td,
-        .table th {
-            vertical-align: middle;
-            text-align: center;
-        }
+    .table td,
+    .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
 
-        .small-content {
-            width: 150px;
-        }
+    .small-content {
+        width: 150px;
+    }
 
-        .large-content {
-            width: 450px;
-        }
+    .large-content {
+        width: 450px;
+    }
 
-        .table-head {
-            color: #ffff;
-            background-color: #399;
-        }
+    .table-head {
+        color: #ffff;
+        background-color: #399;
+    }
 
-        .my-table {
-            counter-reset: stt-counter 0;
-        }
+    .my-table {
+        counter-reset: stt-counter 0;
+    }
 
-        .my-table .stt::before {
-            counter-increment: stt-counter 1;
-            content: counter(stt-counter) " ";
-        }
+    .my-table .stt::before {
+        counter-increment: stt-counter 1;
+        content: counter(stt-counter) " ";
+    }
 
-        a.blue-hover:link,
-        a.blue-hover:visited {
-            color: blue;
-        }
+    a.blue-hover:link,
+    a.blue-hover:visited {
+        color: blue;
+    }
 
-        a.blue-hover:hover,
-        a.blue-hover:active {
-            text-decoration: underline;
-        }
-    </style>
+    a.blue-hover:hover,
+    a.blue-hover:active {
+        text-decoration: underline;
+    }
+</style>
 
-    <div class="row">
-        <div class="col-md-2">
-            {% include 'web_core/sidebar.html' %}
-        </div>
-        <div class="col-md-10">
-            <h2 class="table-title">Thay đổi quy định</h2>
-            <div class="card card-body">
-                <table class='table table-sm my-table'>
-                    <tr class="table-head">
-                        <th class="small-content">STT</th>
-                        <th class="large-content">Quy định</th>
-                        <th class="small-content">Thao tác</th>
-                    </tr>
-                    <tr>
-                        <td class="small-content stt"></td>
-                        <td class="large-content">Số lượng bệnh nhân tối đa trong ngày</td>
-                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_slbn' %}">Thay
+<div class="row">
+    <div class="col-md-2">
+        {% include 'web_core/sidebar.html' %}
+    </div>
+    <div class="col-md-10">
+        <h2 class="table-title">Thay đổi quy định</h2>
+        <div class="card card-body">
+            <table class='table table-sm my-table'>
+                <tr class="table-head">
+                    <th class="small-content">STT</th>
+                    <th class="large-content">Quy định</th>
+                    <th class="small-content">Thao tác</th>
+                </tr>
+                <tr>
+                    <td class="small-content stt"></td>
+                    <td class="large-content">Số lượng bệnh nhân tối đa trong ngày</td>
+                    <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_slbn' %}">Thay
                             đổi</a></td>
-                    </tr>
-                    <tr>
-                        <td class="small-content stt"></td>
-                        <td class="large-content">Tiền khám</td>
-                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_tienkham' %}">Thay
+                </tr>
+                <tr>
+                    <td class="small-content stt"></td>
+                    <td class="large-content">Tiền khám</td>
+                    <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_tienkham' %}">Thay
                             đổi </a></td>
-                    </tr>
-                    <tr>
-                        <td class="small-content stt"></td>
-                        <td class="large-content">Loại bệnh</td>
-                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_loaibenh' %}">Thay
+                </tr>
+                <tr>
+                    <td class="small-content stt"></td>
+                    <td class="large-content">Loại bệnh</td>
+                    <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_loaibenh' %}">Thay
                             đổi </a></td>
-                    </tr>
-                    <tr>
-                        <td class="small-content stt"></td>
-                        <td class="large-content">Thuốc và đơn giá</td>
-                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_thuoc' %}">Thay
+                </tr>
+                <tr>
+                    <td class="small-content stt"></td>
+                    <td class="large-content">Thuốc và đơn giá</td>
+                    <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_thuoc' %}">Thay
                             đổi </a></td>
-                    </tr>
-                    <tr>
-                        <td class="small-content stt"></td>
-                        <td class="large-content">Đơn vị tính</td>
-                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_dvt' %}">Thay
+                </tr>
+                <tr>
+                    <td class="small-content stt"></td>
+                    <td class="large-content">Đơn vị tính</td>
+                    <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_dvt' %}">Thay
                             đổi </a></td>
-                    </tr>
-                    <tr>
-                        <td class="small-content stt"></td>
-                        <td class="large-content">Cách dùng</td>
-                        <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_cachdung' %}">Thay
+                </tr>
+                <tr>
+                    <td class="small-content stt"></td>
+                    <td class="large-content">Cách dùng</td>
+                    <td class="small-content"><a class="blue-hover" href="{% url 'quanli_thaydoi_cachdung' %}">Thay
                             đổi </a></td>
-                    </tr>
-                </table>
-            </div>
+                </tr>
+            </table>
         </div>
     </div>
+</div>
 {% endblock %}

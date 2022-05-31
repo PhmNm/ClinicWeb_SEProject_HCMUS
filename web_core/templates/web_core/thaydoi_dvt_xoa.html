@@ -28,16 +28,16 @@
 
 <div class="d-flex justify-content-center h-100" style="margin-top:50px;">
     <div class="user_card">
-            <div class="card card-body">
-                <p>Bạn có chắc muốn xoá đơn vị tính "{{ dvt.ten }}"?</p>
-                <form action="{% url 'quanli_thaydoi_dvt_xoa' dvt.ten %}" method="post">
-                    {% csrf_token %}
-                    <div class="btn form-btn">
-                        <input class="btn btn-sm btn-danger" type="submit" value="Xác nhận">
-                        <a class="btn back-btn" href="{% url 'quanli_thaydoi_dvt' %}">Hủy</a>
-                    </div>
-                </form>
-            </div>
+        <div class="card card-body">
+            <p>Bạn có chắc muốn xoá đơn vị tính "{{ dvt.ten }}"?</p>
+            <form action="{% url 'quanli_thaydoi_dvt_xoa' dvt.id %}" method="post">
+                {% csrf_token %}
+                <div class="btn form-btn">
+                    <input class="btn btn-sm btn-danger" type="submit" value="Xác nhận">
+                    <a class="btn back-btn" href="{% url 'quanli_thaydoi_dvt' %}">Hủy</a>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}

@@ -9,11 +9,11 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 
 from django.contrib.auth.decorators import login_required
-from .decorators import allowed_users, admin_only
+from .decorators import admin_only
 
 #utils
 from datetime import datetime as dt
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, F
 
 #forms import
 from .forms import benhnhan_form, phieukham_form, ThayDoiGiaTriForm, DanhMucForm, ThuocForm
@@ -21,14 +21,6 @@ from django.forms import inlineformset_factory
 
 #filters import
 from .filters import dskb_filter, LichSuKhamFilter
-
-#authentication import
-from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
-from django.contrib.auth.models import Group
-
-from django.contrib.auth.decorators import login_required
-from .decorators import allowed_users, admin_only
 
 # Create your views here.
 
@@ -56,7 +48,9 @@ def home(request):
 
 @login_required(login_url='login')
 def dskb(request):
-    max_benhnhan = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa').now_value
+    if len(THAMSO.objects.filter(loai='Số lượng bệnh nhân tối đa')) != 0:
+        max_benhnhan = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa').now_value
+    else: max_benhnhan = 0
     today = dt.today().date()
     form = dskb_filter
     if request.method == 'POST':
@@ -266,6 +260,8 @@ def baocao_sudungthuoc(request):
 
     rows = (sdthuoc
             .values('thuoc', 'don_vi')
+            .annotate(ten_thuoc = F('thuoc__ten'))
+            .annotate(ten_donvi = F('don_vi__ten'))
             .annotate(so_luong=Sum('soluong'))
             .annotate(so_lan_dung=Count('thuoc'))
             .order_by()
@@ -309,7 +305,7 @@ def thaydoi_tienkham(request):
 
 @admin_only
 def thaydoi_loaibenh(request):
-    dslb = DANHMUC.objects.filter(loai='Bệnh').values_list('ten', flat=True)
+    dslb = DANHMUC.objects.filter(loai='Bệnh')
     context = {'dslb': dslb}
     return render(request, 'web_core/thaydoi_loaibenh.html', context)
 
@@ -328,8 +324,8 @@ def thaydoi_loaibenh_them(request):
     return render(request, 'web_core/thaydoi_loaibenh_them.html', context)
 
 @admin_only
-def thaydoi_loaibenh_xoa(request, ten):
-    benh = DANHMUC.objects.get(ten=ten)
+def thaydoi_loaibenh_xoa(request, id):
+    benh = DANHMUC.objects.get(id=id)
 
     if request.method == 'POST':
         benh.delete()
@@ -340,7 +336,7 @@ def thaydoi_loaibenh_xoa(request, ten):
 
 @admin_only
 def thaydoi_dvt(request):
-    dsdvt = DANHMUC.objects.filter(loai='Đơn vị').values_list('ten', flat=True)
+    dsdvt = DANHMUC.objects.filter(loai='Đơn vị')
     context = {'dsdvt': dsdvt}
     return render(request, 'web_core/thaydoi_dvt.html', context)
 
@@ -359,8 +355,8 @@ def thaydoi_dvt_them(request):
     return render(request, 'web_core/thaydoi_dvt_them.html', context)
 
 @admin_only
-def thaydoi_dvt_xoa(request, ten):
-    dvt = DANHMUC.objects.get(ten=ten)
+def thaydoi_dvt_xoa(request, id):
+    dvt = DANHMUC.objects.get(id=id)
 
     if request.method == 'POST':
         dvt.delete()
@@ -371,7 +367,7 @@ def thaydoi_dvt_xoa(request, ten):
 
 @admin_only
 def thaydoi_cachdung(request):
-    ds_cach_dung = DANHMUC.objects.filter(loai='Cách dùng').values_list('ten', flat=True)
+    ds_cach_dung = DANHMUC.objects.filter(loai='Cách dùng')
     context = {'ds_cach_dung': ds_cach_dung}
     return render(request, 'web_core/thaydoi_cachdung.html', context)
 
@@ -390,8 +386,8 @@ def thaydoi_cachdung_them(request):
     return render(request, 'web_core/thaydoi_cachdung_them.html', context)
 
 @admin_only
-def thaydoi_cachdung_xoa(request, ten):
-    cach_dung = DANHMUC.objects.get(ten=ten)
+def thaydoi_cachdung_xoa(request, id):
+    cach_dung = DANHMUC.objects.get(id=id)
 
     if request.method == 'POST':
         cach_dung.delete()
@@ -421,8 +417,8 @@ def thaydoi_thuoc_them(request):
     return render(request, 'web_core/thaydoi_thuoc_them.html', context)
 
 @admin_only
-def thaydoi_thuoc_xoa(request, ten):
-    thuoc = DANHMUC.objects.get(ten=ten)
+def thaydoi_thuoc_xoa(request, id):
+    thuoc = DANHMUC.objects.get(id=id)
 
     if request.method == 'POST':
         thuoc.delete()
@@ -432,8 +428,8 @@ def thaydoi_thuoc_xoa(request, ten):
     return render(request, 'web_core/thaydoi_thuoc_xoa.html', context)
 
 @admin_only
-def thaydoi_thuoc_sua(request, ten):
-    thuoc = DANHMUC.objects.get(ten=ten)
+def thaydoi_thuoc_sua(request, id):
+    thuoc = DANHMUC.objects.get(id=id)
     form = ThuocForm(instance=thuoc, initial={'ten': thuoc.ten, 'gia_tri': thuoc.gia_tri})
 
     if request.method == 'POST':

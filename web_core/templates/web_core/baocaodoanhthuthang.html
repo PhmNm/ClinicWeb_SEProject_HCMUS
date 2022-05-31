@@ -2,87 +2,87 @@
 {% load index %}
 
 {% block content %}
-    <style>
-        .col-md-2 {
-            padding: 0;
-        }
+<style>
+    .col-md-2 {
+        padding: 0;
+    }
 
-        .col-md-10 {
-            margin-top: 3rem;
-        }
+    .col-md-10 {
+        margin-top: 50px;
+    }
 
-        .card-body {
-            padding-bottom: 0;
-        }
+    .card-body {
+        padding-bottom: 0;
+    }
 
-        .title-container {
-            margin-bottom: 32px;
-        }
+    .title-container {
+        margin-bottom: 32px;
+    }
 
-        .table-title {
-            display: flex;
-            justify-content: center;
-            text-transform: uppercase;
-        }
+    .table-title {
+        display: flex;
+        justify-content: center;
+        text-transform: uppercase;
+    }
 
-        .table td,
-        .table th {
-            vertical-align: middle;
-            text-align: center;
-        }
+    .table td,
+    .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
 
-        .small-content {
-            width: 150px;
-        }
+    .small-content {
+        width: 150px;
+    }
 
-        .mid-content {
-            width: 250px;
-        }
+    .mid-content {
+        width: 250px;
+    }
 
-        .table-head {
-            color: #ffff;
-            background-color: #399;
-        }
+    .table-head {
+        color: #ffff;
+        background-color: #399;
+    }
 
-        a.blue-hover:link,
-        a.blue-hover:visited {
-            color: blue;
-        }
+    a.blue-hover:link,
+    a.blue-hover:visited {
+        color: blue;
+    }
 
-        a.blue-hover:hover,
-        a.blue-hover:active {
-            text-decoration: underline;
-        }
-    </style>
-    <div class="row">
-        <div class="col-md-2">
-            {% include 'web_core/sidebar.html' %}
+    a.blue-hover:hover,
+    a.blue-hover:active {
+        text-decoration: underline;
+    }
+</style>
+<div class="row">
+    <div class="col-md-2">
+        {% include 'web_core/sidebar.html' %}
+    </div>
+    <div class="col-md-10">
+        <div class="title-container">
+            <h2 class="table-title">Báo cáo doanh thu tháng theo ngày</h2>
+            <h2 class="table-title">Tháng {{ thang }}</h2>
         </div>
-        <div class="col-md-10">
-            <div class="title-container">
-                <h2 class="table-title">Báo cáo doanh thu tháng theo ngày</h2>
-                <h2 class="table-title">Tháng {{ thang }}</h2>
-            </div>
-            <div class="card card-body">
-                <table class='table table-sm'>
-                    <tr class="table-head">
-                        <th class="small-content">STT</th>
-                        <th class="mid-content">Ngày</th>
-                        <th class="small-content">Số bệnh nhân</th>
-                        <th class="mid-content">Doanh thu</th>
-                        <th class="small-content">Tỷ lệ</th>
-                    </tr>
-                    {% for i in stt %}
-                    <tr>
-                        <td class="small-content">{{ stt|index:i|add:1 }}</td>
-                        <td class="mid-content">{{ ngay|index:i|date:'d/m/Y' }}</td>
-                        <td class="small-content">{{ so_benh_nhan|index:i }}</td>
-                        <td class="mid-content">{{ doanh_thu|index:i }} VNĐ</td>
-                        <td class="small-content">{{ ty_le|index:i }} %</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
+        <div class="card card-body">
+            <table class='table table-sm'>
+                <tr class="table-head">
+                    <th class="small-content">STT</th>
+                    <th class="mid-content">Ngày</th>
+                    <th class="small-content">Số bệnh nhân</th>
+                    <th class="mid-content">Doanh thu</th>
+                    <th class="small-content">Tỷ lệ</th>
+                </tr>
+                {% for i in stt %}
+                <tr>
+                    <td class="small-content">{{ stt|index:i|add:1 }}</td>
+                    <td class="mid-content">{{ ngay|index:i|date:'d/m/Y' }}</td>
+                    <td class="small-content">{{ so_benh_nhan|index:i }}</td>
+                    <td class="mid-content">{{ doanh_thu|index:i }} VNĐ</td>
+                    <td class="small-content">{{ ty_le|index:i }} %</td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
+</div>
 {% endblock %}

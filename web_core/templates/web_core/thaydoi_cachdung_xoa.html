@@ -28,16 +28,16 @@
 
 <div class="d-flex justify-content-center h-100" style="margin-top:50px;">
     <div class="user_card">
-            <div class="card card-body">
-                <p>Bạn có chắc muốn xoá cách dùng "{{ cach_dung.ten }}"?</p>
-                <form action="{% url 'quanli_thaydoi_cachdung_xoa' cach_dung.ten %}" method="post">
-                    {% csrf_token %}
-                    <div class="btn form-btn">
-                        <input class="btn btn-sm btn-danger" type="submit" value="Xác nhận">
-                        <a class="btn back-btn" href="{% url 'quanli_thaydoi_cachdung' %}">Hủy</a>
-                    </div>
-                </form>
-            </div>
+        <div class="card card-body">
+            <p>Bạn có chắc muốn xoá cách dùng "{{ cach_dung.ten }}"?</p>
+            <form action="{% url 'quanli_thaydoi_cachdung_xoa' cach_dung.id %}" method="post">
+                {% csrf_token %}
+                <div class="btn form-btn">
+                    <input class="btn btn-sm btn-danger" type="submit" value="Xác nhận">
+                    <a class="btn back-btn" href="{% url 'quanli_thaydoi_cachdung' %}">Hủy</a>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}

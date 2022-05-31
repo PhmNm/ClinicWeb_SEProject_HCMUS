@@ -33,13 +33,19 @@ class DANHMUC(models.Model):
         ('Đơn vị', 'Đơn vị'),
         ('Cách dùng', 'Cách dùng'),
     )
-    ten = models.CharField('Tên', max_length=255, primary_key=True)
+    id = ShortUUIDField(
+        verbose_name='ID Danh mục',
+        length=10,
+        max_length=40,
+        prefix="DM",
+        alphabet="0123456789",
+        primary_key=True)
+    ten = models.CharField('Tên', max_length=255)
     loai = models.CharField('Loại', max_length=20, choices=CATEGORIES)
     gia_tri = models.IntegerField('Giá trị', null=True, blank=True, validators=[MinValueValidator(0)])
 
     def __str__(self):
-        line = str(self.loai) + ' | ' + self.ten
-        return line
+        return self.ten
 
 
 class SUDUNGTHUOC(models.Model):

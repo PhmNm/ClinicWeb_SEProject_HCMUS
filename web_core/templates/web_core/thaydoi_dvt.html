@@ -1,103 +1,102 @@
 {% extends 'web_core/main.html' %}
 
 {% block content %}
-    <style>
-        .col-md-2 {
-            padding: 0;
-        }
+<style>
+    .col-md-2 {
+        padding: 0;
+    }
 
-        .col-md-10 {
-            margin-top: 3rem;
-        }
+    .col-md-10 {
+        margin-top: 50px;
+    }
 
-        .card-body {
-            padding-bottom: 0;
-        }
+    .card-body {
+        padding-bottom: 0;
+    }
 
-        .table-title {
-            text-align: center;
-            text-transform: uppercase;
-        }
+    .table-title {
+        text-align: center;
+        text-transform: uppercase;
+    }
 
-        .btn-text-right {
-            text-align: right;
-        }
+    .btn-text-right {
+        text-align: right;
+    }
 
-        .btn.add-btn {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            margin-right: 20px;
-            color: #fff;
-            background-color: #399;
-        }
+    .btn.add-btn {
+        font-weight: bold;
+        margin-bottom: 8px;
+        margin-right: 20px;
+        color: #fff;
+        background-color: #399;
+    }
 
-        .table td,
-        .table th {
-            vertical-align: middle;
-            text-align: center;
-        }
+    .table td,
+    .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
 
-        .small-content {
-            width: 150px;
-        }
+    .small-content {
+        width: 150px;
+    }
 
-        .large-content {
-            width: 450px;
-        }
+    .large-content {
+        width: 450px;
+    }
 
-        .table-head {
-            color: #ffff;
-            background-color: #399;
-        }
+    .table-head {
+        color: #ffff;
+        background-color: #399;
+    }
 
-        .btn-text-right {
-            text-align: right;
-        }
+    .btn-text-right {
+        text-align: right;
+    }
 
-        .btn:hover {
-            background-color: #fff;
-            color: #399;
-            border-color: #399;
-            border-width: 1px;
-        }
+    .btn:hover {
+        background-color: #fff;
+        color: #399;
+        border-color: #399;
+        border-width: 1px;
+    }
 
-        .my-table {
-            counter-reset: stt-counter 0;
-        }
+    .my-table {
+        counter-reset: stt-counter 0;
+    }
 
-        .my-table .stt::before {
-            counter-increment: stt-counter 1;
-            content: counter(stt-counter) " ";
-        }
-    </style>
-    <div class="row">
-        <div class="col-md-2">
-            {% include 'web_core/sidebar.html' %}
+    .my-table .stt::before {
+        counter-increment: stt-counter 1;
+        content: counter(stt-counter) " ";
+    }
+</style>
+<div class="row">
+    <div class="col-md-2">
+        {% include 'web_core/sidebar.html' %}
+    </div>
+    <div class="col-md-10">
+        <h2 class="table-title" style>Danh sách đơn vị tính</h2>
+        <div class="btn-text-right">
+            <a class='btn add-btn' href="{% url 'quanli_thaydoi_dvt_them' %}">Thêm đơn vị tính</a>
         </div>
-        <div class="col-md-10">
-            <h2 class="table-title" style>Danh sách đơn vị tính</h2>
-            <div class="btn-text-right">
-                <a class='btn add-btn' href="{% url 'quanli_thaydoi_dvt_them' %}">Thêm đơn vị tính</a>
-            </div>
-            <div class="card card-body">
-                <table class='table my-table'>
-                    <tr class="table-head">
-                        <th class="small-content">STT</th>
-                        <th class="large-content">Đơn vị tính</th>
-                        <th class="small-content">Thao tác</th>
-                    </tr>
-                    {% for dvt in dsdvt %}
-                        <tr>
-                            <td class="small-content stt"></td>
-                            <td class="large-content">{{ dvt }}</td>
-                            <td class="small-content">
-                                <a class="btn-sm btn-danger"
-                                   href="{% url 'quanli_thaydoi_dvt_xoa' dvt %}">Xoá</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
+        <div class="card card-body">
+            <table class='table my-table'>
+                <tr class="table-head">
+                    <th class="small-content">STT</th>
+                    <th class="large-content">Đơn vị tính</th>
+                    <th class="small-content">Thao tác</th>
+                </tr>
+                {% for dvt in dsdvt %}
+                <tr>
+                    <td class="small-content stt"></td>
+                    <td class="large-content">{{ dvt }}</td>
+                    <td class="small-content">
+                        <a class="btn-sm btn-danger" href="{% url 'quanli_thaydoi_dvt_xoa' dvt.id %}">Xoá</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
+</div>
 {% endblock %}

@@ -3,96 +3,43 @@
 {% block content %}
 
 <style>
-    .text_White{
-        color: #fff !important;
-    }
-
-    .row.sub {
-        margin-top: 2rem;
-    }
-
     .col-md-2 {
         padding: 0;
     }
 
     .col-md-10 {
-        margin-top: 3rem;
+        margin-top: 50px;
     }
 
     .card-body {
-        padding-bottom: 0rem;
+        padding-bottom: 0px;
     }
 
     .table-title {
-        display: flex;
-        justify-content: center;
-    }
-
-    th {
         text-align: center;
     }
 
-    th.small-content {
+    .table th,
+    .table td {
         vertical-align: middle;
+        text-align: center;
+    }
+
+    .small-content {
         width: 150px;
     }
 
-    th.mid-content {
-        vertical-align: middle;
+    .mid-content {
         width: 250px;
     }
 
-    th.large-content {
-        vertical-align: middle;
-        width: 190px;
+    .large-content {
+        width: 450px;
     }
 
     .table-head {
         color: #ffff;
         background-color: #399;
-    }
-
-    .btn-text-right {
-        text-align: right;
-    }
-
-    .btn.edit-btn {
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        cursor: pointer;
-        color: #fff;
-        background-color: rgb(255, 204, 0);
-    }
-
-    .btn.del-btn {
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        margin-right: 20px;
-        cursor: pointer;
-        color: #fff;
-        background-color: rgb(255, 37, 37)
-    }
-
-    .btn.view-btn {
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        cursor: pointer;
-        color: #fff;
-        background-color: #399;
-    }
-
-    .btn.add-btn{
-        margin-bottom: 15px;
-        cursor: pointer;
-        color: rgb(255, 255, 255);
-        background-color: #399;
-        border-radius: 10px;
-    }
-
-    .btn:hover {
-        background-color: #fff;
-        color: rgb(0, 0, 0) !important;
-        border-color: #399;
     }
 </style>
 <div class="row">
@@ -101,25 +48,29 @@
 
     </div>
     <div class="col-md-10">
-        <h2 class="table-title" style>CHI TIẾT PHIẾU KHÁM</h2>   
-        <div class="card card-body">  
-            
-            <table class='table table-sm'>      
+        <h2 class="table-title" style>CHI TIẾT PHIẾU KHÁM</h2>
+        <div class="card card-body">
+            <table class="table table-sm">
                 <tr>
-                    <th class="large-content table-head" >Họ tên</th>
-                    <th class="large-content">{{phieukham.id_benhnhan.ho_ten}}</th>
-                    <th class="large-content"></th>
-                    <th class="large-content table-head">Ngày khám</th>
-                    <th class="large-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
+                    <th class="mid-content">Họ tên</th>
+                    <td class="mid-content">{{phieukham.id_benhnhan.ho_ten}}</td>
+                    <th class="small-content"></th>
+                    <th class="small-content"></th>
+                    <th class="small-content"></th>
+                    <th class="small-content">Ngày khám</th>
+                    <td class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</td>
                 </tr>
                 <tr>
-                    <th class="large-content table-head">Triệu chứng</th>
-                    <th class="large-content">{{phieukham.trieu_chung}}</th>
-                    <th class="large-content"></th>
-                    <th class="large-content table-head">Dự đoán loại bệnh</th>
-                    <th class="large-content">{{phieukham.loai_benh}}</th>
+                    <th class="mid-content">Triệu chứng</th>
+                    <td class="mid-content">{{phieukham.trieu_chung}}</td>
+                    <th class="small-content"></th>
+                    <th class="small-content"></th>
+                    <th class="small-content"></th>
+                    <th class="mid-content">Dự đoán loại bệnh</th>
+                    <td class="mid-content">{{phieukham.loai_benh.ten}}</td>
                 </tr>
-
+            </table>
+            <table class="table table-sm">
                 <tr class="table-head">
                     <th class="small-content">STT</th>
                     <th class="mid-content">Thuốc</th>
@@ -129,11 +80,11 @@
                 </tr>
                 {% for index, sdthuoc in enum_dsthuoc %}
                 <tr>
-                    <th class="small-content">{{index}}</th>
-                    <th class="mid-content">{{sdthuoc.thuoc}}</th>
-                    <th class="small-content">{{sdthuoc.don_vi}}</th>
-                    <th class="small-content">{{sdthuoc.soluong}}</th>
-                    <th class="mid-content">{{sdthuoc.cach_dung}}</th>
+                    <td class="small-content">{{index}}</td>
+                    <td class="mid-content">{{sdthuoc.thuoc}}</td>
+                    <td class="small-content">{{sdthuoc.don_vi}}</td>
+                    <td class="small-content">{{sdthuoc.soluong}}</td>
+                    <td class="mid-content">{{sdthuoc.cach_dung}}</td>
                 </tr>
                 {% endfor %}
             </table>

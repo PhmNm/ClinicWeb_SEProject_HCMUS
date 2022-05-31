@@ -3,47 +3,37 @@
 {% block content %}
 
 <style>
-    .text_White{
-        color: #fff !important;
-    }
-
-    .row.sub {
-        margin-top: 2rem;
-    }
-
     .col-md-2 {
         padding: 0;
     }
 
     .col-md-10 {
-        margin-top: 3rem;
+        margin-top: 50px;
     }
 
     .card-body {
-        padding-bottom: 0rem;
+        padding-bottom: 0px;
     }
 
     .table-title {
-        display: flex;
-        justify-content: center;
-    }
-
-    th {
         text-align: center;
     }
 
-    th.small-content {
+    .table th,
+    .table td {
         vertical-align: middle;
+        text-align: center;
+    }
+
+    .small-content {
         width: 150px;
     }
 
-    th.mid-content {
-        vertical-align: middle;
+    .mid-content {
         width: 250px;
     }
 
-    th.large-content {
-        vertical-align: middle;
+    .large-content {
         width: 450px;
     }
 
@@ -58,7 +48,7 @@
 
     .btn.edit-btn {
         font-weight: bold;
-        margin-bottom: 0.5rem;
+        margin-bottom: 8px;
         cursor: pointer;
         color: #fff;
         background-color: rgb(255, 204, 0);
@@ -66,7 +56,7 @@
 
     .btn.del-btn {
         font-weight: bold;
-        margin-bottom: 0.5rem;
+        margin-bottom: 8px;
         margin-right: 20px;
         cursor: pointer;
         color: #fff;
@@ -75,13 +65,14 @@
 
     .btn.view-btn {
         font-weight: bold;
-        margin-bottom: 0.5rem;
+        margin-bottom: 8px;
         cursor: pointer;
         color: #fff;
         background-color: #399;
     }
 
-    .btn.add-btn{
+    .btn.add-btn {
+        font-weight: bold;
         margin-bottom: 15px;
         cursor: pointer;
         color: rgb(255, 255, 255);
@@ -101,11 +92,13 @@
 
     </div>
     <div class="col-md-10">
-        <h2 class="table-title" style>DANH SÁCH PHIẾU KHÁM</h2>   
-        <a class="btn add-btn" href="{% url 'quanli_them_phieukham' %}">Thêm phiếu khám</a>
-        <div class="card card-body">  
-            
-            <table class='table table-sm'>      
+        <h2 class="table-title" style>DANH SÁCH PHIẾU KHÁM</h2>
+        <div class="btn-text-right">
+            <a class="btn add-btn" href="{% url 'quanli_them_phieukham' %}">Thêm phiếu khám</a>
+        </div>
+        <div class="card card-body">
+
+            <table class='table table-sm'>
                 <tr class="table-head">
                     <th class="small-content">STT</th>
                     <th class="mid-content">Họ tên</th>
@@ -120,10 +113,10 @@
                     <th class="small-content">{{phieukham.id}}</th>
                     <th class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
                     <th>
-                        <a class="btn view-btn text_White" href="{% url 'quanli_xem_phieukham' phieukham.id %}">Xem</a>
+                        <a class="btn view-btn" href="{% url 'quanli_xem_phieukham' phieukham.id %}">Xem</a>
                         {% if request.user.is_staff%}
-                            <a class="btn edit-btn" href="{% url 'quanli_sua_phieukham' phieukham.id %}">Chỉnh sửa</a>
-                            <a class="btn del-btn" href="{% url 'quanli_xoa_phieukham' phieukham.id %}">Xoá</a>
+                        <a class="btn edit-btn" href="{% url 'quanli_sua_phieukham' phieukham.id %}">Chỉnh sửa</a>
+                        <a class="btn del-btn" href="{% url 'quanli_xoa_phieukham' phieukham.id %}">Xoá</a>
                         {% endif %}
                     </th>
                 </tr>
