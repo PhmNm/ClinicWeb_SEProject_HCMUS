@@ -22,16 +22,23 @@ class benhnhan_form(ModelForm):
             )
         if benhnhan.exists():
             raise ValidationError("Bệnh nhân đã tồn tại")
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["id"].disabled = True
 
 class phieukham_form(ModelForm):
     class Meta:
         model = PHIEUKHAM
         fields = '__all__'
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["id"].disabled = True
 
 class sudungthuoc_form(ModelForm):
     class Meta:
         model = SUDUNGTHUOC
         fields = '__all__'
+
 class ThayDoiGiaTriForm(ModelForm):
     class Meta:
         model = THAMSO
@@ -41,7 +48,6 @@ class DanhMucForm(ModelForm):
     class Meta:
         model = DANHMUC
         fields = ['ten']
-
 
 class ThuocForm(ModelForm):
     class Meta:
