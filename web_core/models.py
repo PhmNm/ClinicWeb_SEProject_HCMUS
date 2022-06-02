@@ -13,7 +13,7 @@ class BENHNHAN(models.Model):
     id = ShortUUIDField(
         verbose_name='ID bệnh nhân',
         length=10,
-        max_length=40,
+        max_length=12,
         prefix="BN",
         alphabet="0123456789",
         primary_key=True)
@@ -36,7 +36,7 @@ class DANHMUC(models.Model):
     id = ShortUUIDField(
         verbose_name='ID Danh mục',
         length=10,
-        max_length=40,
+        max_length=12,
         prefix="DM",
         alphabet="0123456789",
         primary_key=True)
@@ -59,7 +59,7 @@ class PHIEUKHAM(models.Model):
     id = ShortUUIDField(
         verbose_name='ID phiếu khám',
         length=10,
-        max_length=40,
+        max_length=12,
         prefix="PK",
         alphabet="0123456789",
         primary_key=True
