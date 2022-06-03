@@ -1,0 +1,183 @@
+{% extends 'web_core/main.html' %}
+
+{% block content %}
+<style>
+    .col-md-2 {
+        padding: 0;
+    }
+
+    .col-md-10 {
+        margin-top: 50px;
+    }
+
+    .table-title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .small-content {
+        width: 150px;
+    }
+
+    .mid-content {
+        width: 250px;
+    }
+
+    .large-content {
+        width: 450px;
+    }
+
+    .card {
+        margin: auto;
+        width: 50%;
+    }
+
+    .column {
+        width: 40%;
+        text-align: left;
+        margin-left: 10%;
+    }
+
+    .btn.add-btn {
+        font-weight: bold;
+        margin-bottom: 8px;
+        margin-right: 20px;
+        color: #fff;
+        background-color: #399;
+    }
+
+    .btn:hover {
+        background-color: #fff;
+        color: #399;
+        border-color: #399;
+        border-width: 1px;
+    }
+
+    .form-btn {
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .div_in {
+        display: none;
+    }
+
+    a:not([href]):not([tabindex]) {
+        color: white;
+    }
+
+    @media print {
+        .screen {
+            display: none;
+        }
+
+        .div_in {
+            display: block;
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+</style>
+<div class="screen row">
+    <div class="col-md-2">
+        {% include 'web_core/sidebar.html' %}
+    </div>
+    <div class="col-md-10">
+        <div class="card card-body">
+            <h2 class="table-title">HÓA ĐƠN</h2>
+            <div class="row">
+                <div class="column">
+                    <p>Họ và tên: {{phieukham.id_benhnhan.ho_ten}}</p>
+                </div>
+                <div class="column">
+                    <p>Ngày khám: {{phieukham.ngay_kham|date:"d/m/Y"}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column">
+                    <p>Tiền khám: {{tienkham}} đồng</p>
+                </div>
+                <div class="column">
+                    <p>Tiền thuốc: {{tienthuoc}} đồng</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-btn">
+            <a class="btn add-btn" href="{% url 'quanli_xuathoadon' %}">Quay lại</a>
+            <a class="btn add-btn" onClick='window.print()'>In</a>
+        </div>
+    </div>
+</div>
+
+<div class="div_in">
+    <h2 class="table-title">HÓA ĐƠN</h2>
+    <div class="row">
+        <div class="column">
+            <p>Họ và tên: {{phieukham.id_benhnhan.ho_ten}}</p>
+        </div>
+        <div class="column">
+            <p>Ngày khám: {{phieukham.ngay_kham|date:"d/m/Y"}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <p>Triệu chứng: {{phieukham.trieu_chung}}</p>
+        </div>
+        <div class="column">
+            <p>Dự đoán loại bệnh: {{phieukham.loai_benh.ten}}</p>
+        </div>
+    </div>
+    <table class="table table-sm">
+        <tr>
+            <th class="small-content">STT</th>
+            <th class="mid-content">Thuốc</th>
+            <th class="small-content">Đơn vị</th>
+            <th class="small-content">Số lượng</th>
+            <th class="mid-content">Cách dùng</th>
+        </tr>
+        {% for index, sdthuoc in enum_dsthuoc %}
+        <tr>
+            <td class="small-content">{{index}}</td>
+            <td class="mid-content">{{sdthuoc.thuoc}}</td>
+            <td class="small-content">{{sdthuoc.don_vi}}</td>
+            <td class="small-content">{{sdthuoc.soluong}}</td>
+            <td class="mid-content">{{sdthuoc.cach_dung}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="row">
+        <div class="column">
+            <p>Tiền khám: {{tienkham}} đồng</p>
+        </div>
+        <div class="column">
+            <p>Tiền thuốc: {{tienthuoc}} đồng</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+        </div>
+        <div class="column">
+            <p><b>Tổng cộng: {{tongtien}} đồng</b></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

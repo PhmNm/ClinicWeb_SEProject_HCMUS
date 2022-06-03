@@ -49,11 +49,11 @@
         <img class="navbar-brand" alt="logo-brand" src="{% static 'images/favicon.png' %}" height="50"
             style="padding-bottom: 4px" />
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNav">
         {% with request.resolver_match.url_name as url_name %}
         <div class="navbar-nav">
             <a class="nav-item nav-link my-nav-item {% if url_name == 'home' %}my-nav-active{% endif %}"

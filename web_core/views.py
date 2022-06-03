@@ -114,12 +114,14 @@ def xuathoadon(request):
 def hoadon(request, pk):
     phieukham = PHIEUKHAM.objects.get(id=pk)
     tienkham = THAMSO.objects.get(loai='Tiền khám').now_value
-    sdthuocs = SUDUNGTHUOC.objects.filter(id_phieukham=phieukham)   
+    sdthuocs = SUDUNGTHUOC.objects.filter(id_phieukham=phieukham)  
+    enum_dsthuoc = enumerate(sdthuocs,start = 1) 
     tienthuoc = 0
     for sdthuoc in sdthuocs:
         tienthuoc += sdthuoc.soluong * sdthuoc.thuoc.gia_tri
-    context = {'phieukham':phieukham, 'tienkham':tienkham, 'tienthuoc':tienthuoc}
-    return render(request, 'web_core/hoadon.html', context)
+    tong = tienkham + tienthuoc
+    context = {'phieukham':phieukham, 'tienkham':tienkham, 'tienthuoc':tienthuoc, 'tongtien':tong, 'enum_dsthuoc':enum_dsthuoc}
+    return render(request, 'web_core/ds_hoadon.html', context)
 
 @login_required(login_url='login')
 def lsk(request):
