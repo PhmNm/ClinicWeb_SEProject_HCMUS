@@ -24,7 +24,7 @@ class benhnhan_form(ModelForm):
             raise ValidationError("Bệnh nhân đã tồn tại")
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["id"].disabled = True
+        self.fields["id"].widget.attrs["readonly"] = True
 
 class phieukham_form(ModelForm):
     class Meta:
@@ -32,7 +32,7 @@ class phieukham_form(ModelForm):
         fields = '__all__'
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["id"].disabled = True
+        self.fields["id"].widget.attrs["readonly"] = True
 
 class sudungthuoc_form(ModelForm):
     class Meta:

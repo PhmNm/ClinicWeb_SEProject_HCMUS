@@ -121,7 +121,7 @@ def hoadon(request, pk):
         tienthuoc += sdthuoc.soluong * sdthuoc.thuoc.gia_tri
     tong = tienkham + tienthuoc
     context = {'phieukham':phieukham, 'tienkham':tienkham, 'tienthuoc':tienthuoc, 'tongtien':tong, 'enum_dsthuoc':enum_dsthuoc}
-    return render(request, 'web_core/ds_hoadon.html', context)
+    return render(request, 'web_core/hoadon.html', context)
 
 @login_required(login_url='login')
 def lsk(request):
