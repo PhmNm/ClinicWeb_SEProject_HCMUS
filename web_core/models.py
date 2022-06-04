@@ -40,7 +40,7 @@ class DANHMUC(models.Model):
         prefix="DM",
         alphabet="0123456789",
         primary_key=True)
-    ten = models.CharField('Tên', max_length=255)
+    ten = models.CharField('Tên', max_length=255, unique = True)
     loai = models.CharField('Loại', max_length=20, choices=CATEGORIES)
     gia_tri = models.IntegerField('Giá trị', null=True, blank=True, validators=[MinValueValidator(0)])
 
