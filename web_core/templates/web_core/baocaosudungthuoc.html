@@ -14,8 +14,13 @@
         padding-bottom: 0;
     }
 
+    .submit-btn {
+        margin-left: 10px;
+        background-color: #399;
+    }
+
     .title-container {
-        margin-bottom: 32px;
+        margin: 32px 0;
     }
 
     .table-title {
@@ -52,12 +57,29 @@
     a.blue-hover:active {
         text-decoration: underline;
     }
+
+    .errorlist {
+        font-weight: bold;
+        color: red;
+        list-style-type: none;
+    }
 </style>
 <div class="row">
     <div class="col-md-2">
         {% include 'web_core/sidebar.html' %}
     </div>
     <div class="col-md-10">
+        <div class='row' style="padding-bottom: 20px;">
+            <div class='col'>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form.thang_bao_cao.label_tag}}
+                    {{form.thang_bao_cao}}
+                    <input class="btn-sm btn-info submit-btn" type="submit" value="Xem">
+                </form>
+                {{form.thang_bao_cao.errors}}
+            </div>
+        </div>
         <div class="title-container">
             <h2 class="table-title">Báo cáo sử dụng thuốc</h2>
             <h2 class="table-title">Tháng {{ thang }}</h2>

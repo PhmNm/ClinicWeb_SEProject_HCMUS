@@ -20,7 +20,7 @@ from .forms import benhnhan_form, phieukham_form, ThayDoiGiaTriForm, DanhMucForm
 from django.forms import inlineformset_factory
 
 #filters import
-from .filters import dskb_filter, LichSuKhamFilter
+from .filters import dskb_filter, baocao_filter, LichSuKhamFilter
 
 # Create your views here.
 
@@ -220,9 +220,14 @@ def lap_bao_cao(request):
 
 @admin_only
 def baocao_doanhthuthang(request):
-    thang = dt.today().strftime('%m/%Y')
-    queryset_dict_ngay = PHIEUKHAM.objects.values('ngay_kham').filter(ngay_kham__month=dt.today().date().month)
+    thang_nam = dt.today().date()
+    form = baocao_filter
+    if request.method == 'POST':
+        form = baocao_filter(request.POST)
+        if form.is_valid() and form['thang_bao_cao'].data != "":
+            thang_nam = dt.strptime(form['thang_bao_cao'].data, '%m/%Y')
 
+    queryset_dict_ngay = PHIEUKHAM.objects.values('ngay_kham').filter(ngay_kham__month=thang_nam.month).filter(ngay_kham__year=thang_nam.year)
     ngay = []
     so_benh_nhan = []
     doanh_thu = []
@@ -250,14 +255,20 @@ def baocao_doanhthuthang(request):
     ty_le = [round(100 * x / sum(doanh_thu), 2) for x in doanh_thu]
     stt = [x for x in range(len(ngay))]
 
-    context = {'thang': thang, 'stt': stt, 'ngay': ngay, 'so_benh_nhan': so_benh_nhan, 'doanh_thu': doanh_thu,
-               'ty_le': ty_le}
+    context = {'thang': thang_nam.strftime('%m/%Y'), 'stt': stt, 'ngay': ngay, 'so_benh_nhan': so_benh_nhan, 'doanh_thu': doanh_thu,
+               'ty_le': ty_le, 'form': form}
     return render(request, 'web_core/baocaodoanhthuthang.html', context=context)
 
 @admin_only
 def baocao_sudungthuoc(request):
-    thang = dt.today().strftime('%m/%Y')
-    queryset_ngay = PHIEUKHAM.objects.filter(ngay_kham__month=dt.today().date().month).values_list('id', flat=True)
+    thang_nam = dt.today().date()
+    form = baocao_filter
+    if request.method == 'POST':
+        form = baocao_filter(request.POST)
+        if form.is_valid() and form['thang_bao_cao'].data != "":
+            thang_nam = dt.strptime(form['thang_bao_cao'].data, '%m/%Y')
+
+    queryset_ngay = PHIEUKHAM.objects.filter(ngay_kham__month=thang_nam.month).filter(ngay_kham__year=thang_nam.year).values_list('id', flat=True)
     sdthuoc = SUDUNGTHUOC.objects.filter(id_phieukham__in=queryset_ngay)
 
     rows = (sdthuoc
@@ -270,7 +281,7 @@ def baocao_sudungthuoc(request):
             )
 
     stt = [x for x in range(len(rows))]
-    context = {'thang': thang, 'stt': stt, 'rows': rows}
+    context = {'thang': thang_nam.strftime('%m/%Y'), 'stt': stt, 'rows': rows, 'form': form}
     return render(request, 'web_core/baocaosudungthuoc.html', context=context)
 
 @admin_only

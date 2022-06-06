@@ -14,6 +14,17 @@ class dskb_filter(Form):
         error_messages={'invalid':'Yêu cầu nhập đúng định dạng'},
     )
 
+class baocao_filter(Form):
+    thang_bao_cao = DateField(
+        initial=dt.today().date().strftime('%m/%Y'),
+        required=False,
+        label='Lập báo cáo tháng: ',
+        input_formats=["%m/%Y"],
+        widget=DateInput(format="%m/%Y"),
+        label_suffix=' (Định dạng nhập: "mm/YYYY")',
+        error_messages={'invalid': 'Yêu cầu nhập đúng định dạng'},
+    )
+
 class LichSuKhamFilter(FilterSet):
     ID = CharFilter(field_name="id_benhnhan",lookup_expr='exact', strip=False)
     class Meta:
