@@ -33,13 +33,13 @@
         width: 250px;
     }
 
-    .large-content {
-        width: 450px;
-    }
-
     .table-head {
         color: #ffff;
         background-color: #399;
+    }
+
+    .btn {
+        margin: 0 5px;
     }
 
     .btn-text-right {
@@ -108,17 +108,17 @@
                 </tr>
                 {% for index, phieukham in enum_dspk %}
                 <tr>
-                    <th class="small-content">{{index}}</th>
-                    <th class="mid-content">{{phieukham.id_benhnhan.ho_ten}}</th>
-                    <th class="small-content">{{phieukham.id}}</th>
-                    <th class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</th>
-                    <th>
+                    <td class="small-content">{{index}}</td>
+                    <td class="mid-content">{{phieukham.id_benhnhan.ho_ten}}</td>
+                    <td class="small-content">{{phieukham.id}}</td>
+                    <td class="small-content">{{phieukham.ngay_kham|date:"d/m/Y"}}</td>
+                    <td>
                         <a class="btn view-btn" href="{% url 'quanli_xem_phieukham' phieukham.id %}">Xem</a>
                         {% if request.user.is_staff%}
                         <a class="btn edit-btn" href="{% url 'quanli_sua_phieukham' phieukham.id %}">Chỉnh sửa</a>
                         <a class="btn del-btn" href="{% url 'quanli_xoa_phieukham' phieukham.id %}">Xoá</a>
                         {% endif %}
-                    </th>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
