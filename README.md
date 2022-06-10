@@ -8,7 +8,37 @@ Project còn là đồ án môn học NMCNPM lớp 19_22/HCMUS với sự đóng
 - Tạ Võ Anh Khuê (19120551)
 - Nguyễn Minh Long (19120568)
 - Phạm Văn Nam (19120597)
-  
+
+# CÁC CHỨC NĂNG VÀ CÁCH SỬ DỤNG
+
+Các role user chính:
+
+- Guest: bất kỳ ai truy cập vào trang web
+- Customer: người trực phòng mạch (lễ tân hoặc bác sĩ)
+- Admin: người quản lí chính các thông tin trong phòng mạch (bác sĩ hoặc người quản lí phòng mạch khác bác sĩ)
+
+Trang web gồm các màn hình chính:
+
+- Trang chủ: Hiện các bảng tin mini gồm ảnh, tiêu đề và nội dung ngắn
+- Tra cứu: dành cho bất kỳ ai muốn tìm kiếm lịch sử khám (không yêu cầu đăng nhập)
+- Quản lý: dành cho Customer và Admin (yêu cầu đăng nhập)
+  - Customer và Admin:
+    - Danh sách khám bệnh: quản lí các bệnh nhân đã khám trong ngày (bệnh nhân được thêm vào danh sách sau khi có thông tin Phiếu khám); có thể xem danh sách của một ngày khác ngày hiện tại; thêm thông tin một bệnh nhân mới đến khám (có xử lí kiểm tra thông tin đã tồn tại)
+    - Lịch sử khám: hiện tất cả lịch sử các bệnh nhân đã đến khám; có thể xem lịch sử khám của một ID bệnh nhân bất kỳ
+    - Danh sách phiếu khám: hiện tất cả phiếu khám của các bệnh nhân; có thể xem thông tin chi tiết của phiếu khám; có thể chỉnh sửa thông tin hay xoá phiếu khám (yêu cầu quyền admin)
+    - Xuất hoá đơn: hiện tất cả phiếu khám các bệnh nhân; có thể xuất hoá đơn (hiện thông tin) ứng với phiếu khám và hỗ trợ in từ trình in của trình duyệt
+  - Ngoài ra Admin còn có:
+    - Danh sách bệnh nhân: hiện tất cả bệnh nhân trong cơ sở dữ liệu; có thể chỉnh sửa thông tin hay xoá bệnh nhân khỏi hệ thống
+    - Lập báo cáo: lập thông tin báo cáo các nội dung tương ứng (doanh thu tháng hay sử dụng thuốc)
+    - Thay đổi quy định: hiện danh sách các mục được phép thay đổi (số bệnh nhân tối đa trong ngày, tiền khám, loại bệnh, thuốc - đơn giá thuốc, đơn vị tính, cách dùng); có thể thêm và xoá thông tin (loại bệnh, đơn vị, cách dùng) và chỉnh sửa thông tin (thuốc - đơn giá thuốc)
+
+### THÔNG TIN ĐĂNG NHẬP ĐỂ THỰC HIỆN THỬ NGHIỆM CÁC QUYỀN TRUY CẬP
+
+>[thông tin đăng nhập](https://studenthcmusedu-my.sharepoint.com/:w:/g/personal/19120597_student_hcmus_edu_vn/ETdSaS8oWyFFmB2HiwfKh_oBzDg4qbKnwEFXaIsSOBLIkw?e=3n4Iqo)
+
+QUYỀN TRUY CẬP LINK: phải là thành viên của VNU-HCMUS \
+Nếu không là thành viên của VNU-HCMUS: liên hệ qua email 19120597@student.hcmus.edu.vn để được cung cấp thông tin đăng nhập
+
 # MÔI TRƯỜNG THỰC THI
 
 [![py-image]][py-url]
@@ -212,15 +242,28 @@ Link demo: not have yet
 
 # CURRENT STATUS
 
-Đã hoàn thành các yêu cầu trong [Yêu cầu đồ án][ycda-url]
+Đã hoàn thành các yêu cầu trong [Yêu cầu đồ án][ycda-url] gồm:
+
+1. Lập danh sách khám bệnh
+2. Lập phiếu khám bệnh
+3. Tra cứu bệnh nhân
+4. Lập hóa đơn thanh toán
+5. Lập báo cáo tháng
+6. Thay đổi qui định
+
+Và các chức năng bổ sung:
+
+- Đăng nhập
+- Danh sách bệnh nhân
 
 # FUTURE WORKS
 
-Bổ sung các chức năng:
-
-- Đặt khám online
-- Tư vấn trực tuyến
-- Mở rộng quy mô trang web dựa trên quy mô phòng mạch
+- Cải thiện hiệu năng
+- Bổ sung các chức năng:
+  - Trang chủ - Bảng tin
+  - Đặt khám online
+  - Tư vấn trực tuyến
+  - Mở rộng quy mô trang web dựa trên quy mô phòng mạch
 
 [py-image]: https://img.shields.io/badge/Python-%3E3.9%2C%20%3C3.10-green
 [py-url]: https://www.python.org/downloads/release/python-396/
