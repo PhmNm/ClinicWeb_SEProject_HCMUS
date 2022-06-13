@@ -9,11 +9,27 @@
 
     .card {
         width: 465px;
-        height: 312px;
+        height: 340px;
     }
 
-    .content-row.text {
-        padding-top: 0.12px;
+    .content-row.img {
+        max-width: 432px;
+        max-height: 200px;
+        overflow: hidden;
+    }
+
+    .content-row img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .title {
+        line-height: 1;
+        vertical-align: -7px;
+        font-size: 18px;
+        font-weight: bold;
     }
 </style>
 <div class="news-content">
@@ -21,39 +37,62 @@
         <div class="col-md-4">
             <div class="card card-body">
                 <div class="content-row img">
-                    <img src="{% static 'images/favicon.png' %}" href="#">
+                    <a href="https://vnexpress.net/them-121-o-dich-sot-xuat-huyet-tai-tp-hcm-4469869.html"
+                        target="_blank">
+                        <img src="{% static 'images/mosquito.jpg' %}">
+                    </a>
                 </div>
                 <div class="content-row text">
-                    <a href="#" class="title">Tiêu đề</a>
+                    <a href="https://vnexpress.net/them-121-o-dich-sot-xuat-huyet-tai-tp-hcm-4469869.html"
+                        target="_blank" class="title">Thêm 121 ổ dịch sốt xuất huyết tại TP. HCM</a>
                 </div>
                 <div class="content-row text">
-                    <span>Nội dung</span>
+                    <span class="contents">TP. HCM tuần qua ghi nhận 121 ổ dịch sốt xuất huyết mới phát sinh ở 71
+                        phường,
+                        xã, tăng 42 ổ so với tuần trước đó...</span>
+                </div>
+                <div class="content-row text">
+                    <span>Nguồn: VnExpress</span>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card card-body">
                 <div class="content-row img">
-                    <img src="{% static 'images/favicon.png' %}" href="#">
+                    <a href="https://tuoitre.vn/tin-covid-19-chieu-12-6-so-mac-moi-giam-con-568-ca-29-tinh-
+                        thanh-khong-ghi-nhan-ca-moi-20220612174509205.htm" target="_blank">
+                        <img src="{% static 'images/covid.jpg' %}">
+                    </a>
                 </div>
                 <div class="content-row text">
-                    <a href="#" class="title">Tiêu đề</a>
+                    <a href="https://tuoitre.vn/tin-covid-19-chieu-12-6-so-mac-moi-giam-con-568-ca-29-tinh-thanh-khong-ghi-nhan-ca-moi-20220612174509205.htm"
+                        target="_blank" class="title">Tin COVID-19 chiều 12-6</a>
                 </div>
                 <div class="content-row text">
-                    <span>Nội dung</span>
+                    <span>Số mắc mới giảm còn 568 ca, 29 tỉnh thành không ghi nhận ca mới...</span>
+                </div>
+                <div class="content-row text">
+                    <span>Nguồn: Tuổi trẻ</span>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card card-body">
                 <div class="content-row img">
-                    <img src="{% static 'images/favicon.png' %}" href="#">
+                    <a href="https://thanhnien.vn/ngay-moi-voi-tin-tuc-suc-khoe-4-dau-hieu-cholesterol-dang-vuot-tam-kiem-soat-post1466503.html"
+                        target="_blank">
+                        <img src="{% static 'images/cholesterol.jpeg' %}" href="#">
+                    </a>
                 </div>
                 <div class="content-row text">
-                    <a href="#" class="title">Tiêu đề</a>
+                    <a href="https://thanhnien.vn/ngay-moi-voi-tin-tuc-suc-khoe-4-dau-hieu-cholesterol-dang-vuot-tam-kiem-soat-post1466503.html"
+                        class="title">4 dấu hiệu cholesterol đang 'vượt tầm kiểm soát</a>
                 </div>
                 <div class="content-row text">
-                    <span>Nội dung</span>
+                    <span>4 dấu hiệu cholesterol của bạn đang ở mức nguy hiểm, 4 cách giảm cân...</span>
+                </div>
+                <div class="content-row text">
+                    <span>Nguồn: Thanh niên</span>
                 </div>
             </div>
         </div>
@@ -62,39 +101,63 @@
         <div class="col-md-4">
             <div class="card card-body">
                 <div class="content-row img">
-                    <img src="{% static 'images/favicon.png' %}" href="#">
+                    <a href="https://www.24h.com.vn/suc-khoe-doi-song/9-loai-thuc-pham-nen-an-khi-bi-tay-chan-mieng-c62a1367295.html"
+                        target="_blank">
+                        <img src="{% static 'images/sup-bi-do.jpg' %}">
+                    </a>
                 </div>
                 <div class="content-row text">
-                    <a href="#" class="title">Tiêu đề</a>
+                    <a href="https://www.24h.com.vn/suc-khoe-doi-song/9-loai-thuc-pham-nen-an-khi-bi-tay-chan-mieng-c62a1367295.html"
+                        target="_blank" class="title">9 loại thực phẩm nên ăn khi bị tay chân miệng</a>
                 </div>
                 <div class="content-row text">
-                    <span>Nội dung</span>
+                    <span class="contents">Trẻ bị tay chân miệng thường gặp những cơn đau do vết loét ở miệng gây ra,
+                        khiến trẻ rất sợ ăn...</span>
+                </div>
+                <div class="content-row text">
+                    <span>Nguồn: 24h.com.vn</span>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card card-body">
                 <div class="content-row img">
-                    <img src="{% static 'images/favicon.png' %}" href="#">
+                    <a href="https://www.vinmec.com/vi/tin-tuc/thong-tin-suc-khoe/suc-khoe-tong-quat/sot-xuat-huyet-bi-ngua-man-do-ngoai-da-la-binh-thuong-hay-bat-thuong/"
+                        target="_blank">
+                        <img src="{% static 'images/gai.jpg' %}" href="#">
+                    </a>
                 </div>
                 <div class="content-row text">
-                    <a href="#" class="title">Tiêu đề</a>
+                    <a href="https://www.vinmec.com/vi/tin-tuc/thong-tin-suc-khoe/suc-khoe-tong-quat/sot-xuat-huyet-bi-ngua-man-do-ngoai-da-la-binh-thuong-hay-bat-thuong/"
+                        target="_blank" class="title">Sốt xuất huyết bị ngứa, mẩn đỏ ngoài da?</a>
                 </div>
                 <div class="content-row text">
-                    <span>Nội dung</span>
+                    <span>Sốt xuất huyết với những triệu chứng điển hình là chóng mặt, đau đầu, buồn nôn, xuất huyết
+                        dưới da. Nhiều người bị...</span>
+                </div>
+                <div class="content-row text">
+                    <span>Nguồn: Vinmec</span>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card card-body">
                 <div class="content-row img">
-                    <img src="{% static 'images/favicon.png' %}" href="#">
+                    <a href="https://vtv.vn/suc-khoe/benh-vien-binh-dan-tam-soat-mien-phi-5-benh-ly-thuong-gap-20220509203744047.htm"
+                        target="_blank">
+                        <img src="{% static 'images/tam-soat.jpg' %}" href="#">
+                    </a>
                 </div>
                 <div class="content-row text">
-                    <a href="#" class="title">Tiêu đề</a>
+                    <a href="https://vtv.vn/suc-khoe/benh-vien-binh-dan-tam-soat-mien-phi-5-benh-ly-thuong-gap-20220509203744047.htm"
+                        class="title">Bệnh viện Bình Dân tầm soát miễn phí 5 bệnh lý</a>
                 </div>
                 <div class="content-row text">
-                    <span>Nội dung</span>
+                    <span>Bắt đầu từ ngày 11/5, Bệnh viện Bình Dân (TP. Hồ Chí Minh) sẽ tổ chức chương trình
+                        tầm soát miễn phí...</span>
+                </div>
+                <div class="content-row text">
+                    <span>Nguồn: VTV</span>
                 </div>
             </div>
         </div>
