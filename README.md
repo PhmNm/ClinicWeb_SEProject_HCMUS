@@ -238,7 +238,7 @@ Sau khi deploy báo thành công, chờ 10 đến 15 phút trước khi web đư
 
 Link website: [clinic-web-app](https://clinic-web-project.herokuapp.com/)
 
-Link demo: not have yet
+Link demo: [https://bit.ly/3MQLLZW](https://bit.ly/3MQLLZW)
 
 # CURRENT STATUS
 
