@@ -253,6 +253,7 @@ Link demo: [https://bit.ly/3MQLLZW](https://bit.ly/3MQLLZW)
 
 Và các chức năng bổ sung:
 
+- Trang chủ - Bảng tin
 - Đăng nhập
 - Danh sách bệnh nhân
 
@@ -260,18 +261,17 @@ Và các chức năng bổ sung:
 
 - Cải thiện hiệu năng
 - Bổ sung các chức năng:
-  - Trang chủ - Bảng tin
   - Đặt khám online
   - Tư vấn trực tuyến
   - Mở rộng quy mô trang web dựa trên quy mô phòng mạch
 
-[py-image]: https://img.shields.io/badge/Python-%3E3.9%2C%20%3C3.10-green
+[py-image]: https://img.shields.io/badge/Python-%3E3.9%2C%20%3C3.10-yellow
 [py-url]: https://www.python.org/downloads/release/python-396/
 [django-image]: https://img.shields.io/badge/Django-4.0.4-green
 [django-url]: https://docs.djangoproject.com/en/4.0/
 [dj-filter-url]: https://django-filter.readthedocs.io/en/stable/index.html
 [suuid-url]: https://github.com/skorokithakis/shortuuid
-[Vscode-image]: https://img.shields.io/badge/vscode-x64-green
+[Vscode-image]:https://img.shields.io/badge/VSCode-x64-blue
 [vscode-url]: https://code.visualstudio.com/
 [db-image]: https://img.shields.io/badge/Django--database-SQLite-green
 [db-url]: https://docs.djangoproject.com/en/4.0/intro/tutorial02/#:~:text=By%20default%2C%20the%20configuration%20uses,else%20to%20support%20your%20database.

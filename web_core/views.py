@@ -50,7 +50,7 @@ def home(request):
 def dskb(request):
     if len(THAMSO.objects.filter(loai='Số lượng bệnh nhân tối đa')) != 0:
         max_benhnhan = THAMSO.objects.get(loai='Số lượng bệnh nhân tối đa').now_value
-    else: max_benhnhan = 0
+    else: max_benhnhan = 40
     today = dt.today().date()
     form = dskb_filter
     if request.method == 'POST':
