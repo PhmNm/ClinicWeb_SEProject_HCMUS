@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-9vvgleq5r@ymr^t%6zxbuaavayz%hs0j4i=*-fclevo&4((c+)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['clinic-web-project.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'clinic-web-project.herokuapp.com',
+    '.vercel.app',
+    '127.0.0.1'
+]
 
 
 # Application definition
