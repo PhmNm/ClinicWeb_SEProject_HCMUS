@@ -111,7 +111,7 @@ python3 manage.py runserver
 
 Vào trình duyệt và mở localhost ở port :8000 là đã có thể thao tác với web trên localhost: [127.0.0.1](http://127.0.0.1:8000/)
 
-# HƯỚNG DÃN DEPLOY LÊN HEROKU (KHÔNG CÒN MIỄN PHÍ)
+# HƯỚNG DẪN DEPLOY LÊN HEROKU (KHÔNG CÒN MIỄN PHÍ)
 
 > Vì Heroku ngưng hỗ trợ deployment thông qua github nên cần cài đặt [Heroku CLI][heroku-cli-url] để deployment từ local lên Heroku
 
