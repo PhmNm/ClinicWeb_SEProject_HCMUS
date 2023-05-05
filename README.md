@@ -111,7 +111,7 @@ python3 manage.py runserver
 
 Vào trình duyệt và mở localhost ở port :8000 là đã có thể thao tác với web trên localhost: [127.0.0.1](http://127.0.0.1:8000/)
 
-# HƯỚNG DÃN DEPLOY LÊN HEROKU
+# HƯỚNG DÃN DEPLOY LÊN HEROKU (KHÔNG CÒN MIỄN PHÍ)
 
 > Vì Heroku ngưng hỗ trợ deployment thông qua github nên cần cài đặt [Heroku CLI][heroku-cli-url] để deployment từ local lên Heroku
 
@@ -170,6 +170,8 @@ Sau đó vào app trên website và chọn Open app ở bên phải màn hình �
 
 ```webste
 https://clinic-web-project.herokuapp.com/
+
+(không còn khả dụng vì chính sách trả phí của heroku)
 ```
 
 Mở file settings.py và thực hiện một số thay đổi sau:
